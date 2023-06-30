@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=5">
+        <title>Outclimb - {{ .Name }}</title>
+        <link href="/static/css/main.css" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <img src="/static/images/logo_light.webp" height="76" alt="Outclimb" class="light"/>
+            <img src="/static/images/logo_dark.webp" height="76" alt="Outclimb" class="dark"/>
+        </header>
+        <section class="event">
+            <hgroup>
+                <img src="{{ .Image }}" alt="{{ .ImageAlt }}">
+                <h1>{{ .Name }}</h1>
+                <p>In-Person | {{ .Date }} • {{ .Time }}</p>
+            </hgroup>
+
+            {{ .Body }}
+            
+            {{ if .Link }}<a href="{{ .Link }}" target="_blank" class="button">{{ .LinkText }}</a>{{ end }}
+        </section>
+    </body>
+</html>
