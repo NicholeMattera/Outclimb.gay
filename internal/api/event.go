@@ -24,7 +24,6 @@ func LatestEventHandler() http.Handler {
 
 		for _, event := range events {
 			if event.Timestamp > now {
-				log.Printf("%s", "https://outclimb.gay/events/"+event.Route)
 				http.Redirect(w, r, "https://outclimb.gay/events/"+event.Route, http.StatusTemporaryRedirect)
 				break
 			}
@@ -37,7 +36,7 @@ func EventHandler() http.Handler {
 
 	template, err := template.ParseFiles("assets/event.tmpl")
 	if err != nil {
-		log.Fatal("Error: Unable to parse the template file. (Home)")
+		log.Fatal("Error: Unable to parse the template file. (Event)")
 		return nil
 	}
 
