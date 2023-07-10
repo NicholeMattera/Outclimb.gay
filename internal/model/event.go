@@ -169,11 +169,13 @@ func GetEvents() EventMap {
 </p>
 <h2>Carpool</h2>
 <p>
-	If you plan on participating in the car pool we will meet at 8am, as it is an 80 minute drive. The carpool meets at the Park & Ride at 1559 Eustis in St Paul. (appox Hwy 280 and Como Ave)
+	If you plan on participating in the car pool we will meet at 7am, as it is a 2 hour drive. The carpool meets at the Park & Ride at 1559 Eustis in St Paul. (appox Hwy 280 and Como Ave)
 </p>`,
 			Date:      "Sunday July 16th",
 			Image:     "/static/images/sugar_loaf.webp",
 			ImageAlt:  "Photo from on top of Sugar Loaf Bluff with a transgender flag planted looking out towards Winona, Minnesota",
+			Link:      "https://forms.gle/U99GJ7kafQmVyai37",
+			LinkText:  "Register",
 			Name:      "Outdoor Climbing - Sugar Loaf Bluff / Winona, MN",
 			Route:     "20230716-outdoor-climbing-sugar-loaf-bluff",
 			Time:      "9:00am",
