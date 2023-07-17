@@ -8,7 +8,7 @@ import (
 )
 
 func main() {
-	mux := http.NewServeMux()
+	mux := http.DefaultServeMux
 	api.SetupRouter(mux)
 	log.Fatal(http.ListenAndServe(":8080", mux))
 }
