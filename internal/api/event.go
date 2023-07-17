@@ -23,7 +23,7 @@ func LatestEventHandler() http.Handler {
 		now := time.Now().Unix()
 
 		for _, event := range events {
-			if event.Timestamp > now {
+			if event.Timestamp+86400 > now {
 				http.Redirect(w, r, "https://outclimb.gay/events/"+event.Route, http.StatusTemporaryRedirect)
 				break
 			}
