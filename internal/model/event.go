@@ -209,11 +209,11 @@ func GetEvents() EventMap {
 </p>
 <h2>About He Mni Can</h2>
 <p>
-	This bluff rises 350 above ground level and is home to over 150 sport routes sitting in an old quarry site. This site can feel sandbagged (harder than discribed) due to the rock being polished from hands and shoes on the wall. Generally the harder the climb, starting at about 5.10 or so, the less polished it will be.
+	This bluff rises 350 above ground level and is home to over 150 sport routes sitting in an old quarry site. This site can feel sandbagged (harder than described) due to the rock being polished from hands and shoes on the wall. Generally the harder the climb, starting at about 5.10 or so, the less polished it will be.
 </p>
 <h2>Getting there</h2>
 <p>
-	Navigate to the <a href="https://goo.gl/maps/aZoFXmb3iWY9nYCz5" target="_blank">Barn Bluff Trailhead</a> and park for free in the lot a little further down the road. Then head up the stairs Switching back left and up before arriving at the <a href="https://www.google.com/maps/place/44%C2%B034'08.4%22N+92%C2%B031'15.8%22W/@44.56899,-92.5232487,643m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d44.56899!4d-92.52106?hl=en&entry=ttu" target="_blank">base of the cliff</a>.
+	Navigate to the <a href="https://goo.gl/maps/aZoFXmb3iWY9nYCz5" target="_blank">Barn Bluff Trailhead</a> and park for free in the lot a little further down the road. Then head up the stairs Switching back left and up before arriving at the <a href="https://www.google.com/maps/place/44%C2%B034'08.4%22N+92%C2%B031'15.8%22W/@44.56899,-92.5232487,643m/data=!3m2!1e3!4b1!4m4!3m3!8m2!3d44.56899!4d-92.52106?hl=en&entry=ttu" target="_blank">base of the cliff</a>. We will be waiting at the parking location until 9:20.
 </p>
 <h2>Gear</h2>
 <p>
@@ -221,25 +221,41 @@ func GetEvents() EventMap {
 </p>
 <ul>
 	<li>Shoes are highly recommended to get full enjoyment from the trip. If you do not own shoes we suggest renting from the University of Minnesota or REI.</li>
-	<li>Helmets will be required at all times near the base of the climb, including when tying in. Redwing is known for rockfall. If you do not own a helmet we will have two loaners for people to use, but they get sweaty so please bring a bandana to use on the inside of the helmet if you desire. Helmets can also be rented from the the University of Minnesota or REI.</li>
+	<li>Helmets will be required at all times near the base of the climb, including when typing in as Redwing is known for rockfall. If you do not own a helmet we will have two for people to use, but they get sweaty so please bring a bandana to use on the inside of the helmet if you desire. Helmets can also be rented from the University of Minnesota or REI.</li>
+	<li>Harnesses are required for climbing and are in short supply. We have two for people to use but if you have your own or can borrow one from a friend this is recommended.</li>
 </ul>
 <h2>What to bring</h2>
 <p>
-	Pack for a day hike, and bring all your climbing stuff (chalk, shoes, harness, helmet, etc.). Bring a large water bottle and lunch. We suggest bringing at least 2L for a single person, a refilled 2L soda bottle could work well for this. Other recommendations include Sunglasses that you can get dirty, a sweat towel/bandana, hand sanitizer, sunscreen, extra snacks, and sandles to lounge in.
+	Pack for a day hike, and bring all your climbing stuff (chalk, shoes, harness, helmet, quickdraws, rope, etc.). Bring a large water bottle and lunch. We suggest bringing at least 2L for a single person, a refilled 2L soda bottle could work well for this. Other recommendations include Sunglasses that you can get dirty, a sweat towel/bandana, hand sanitizer, insect repellant, sunscreen, extra snacks, and sandals to lounge in.
 </p>
 <h2>Carpool</h2>
 <p>
-	If you plan on participating in the car pool we will meet at 8am, as it is an 80 minute drive. The carpool meets at the Park & Ride at 1559 Eustis in St Paul. (appox Hwy 280 and Como Ave)
+	If you plan on participating in the car pool we will meet at 8am, as it is a 60 minute drive. The carpool meets at the <a href="https://goo.gl/maps/wPhJLSjHaKNKtMm76" target="_blank">Metro Transit Park and Ride</a> at 1559 Eustis in St Paul. (approx Hwy 280 and Como Ave). There may be alternate locations available.
 </p>
 <h2>A final note</h2>
 <p>
-	This is a very popular climbing and large climbing area. We will ber moving wherever we can to find open routes and won't leave ropes on the wall any longer than we have to. Do your best to get there at 9:30am if you want to have an easy time finding us and climb all the routes we set up. Otherwise please inform us if you plan on arriving late so we can trt to keep our phones on.
+	This is a very popular and large climbing area. We will be moving wherever we can to find open routes and won't leave ropes on the wall any longer than we have to. Do your best to get there at 9:15am if you want to have an easy time finding us and climb all the routes we set up. Otherwise please inform us if you plan on arriving late so we can try to keep our phones on.
+</p>
+<h2>Help make climbing more accessible</h2>
+<p>
+	If you have climbed with us in the past, plan to do so in the future, or just like what we're trying to do, please consider donating $5 or more to help maintain our gear and make climbing more accessible, thanks!
 </p>`,
-			Category:  OutdoorClimbing,
-			Date:      "Sunday July 30th",
-			Image:     "/static/images/redwing.webp",
-			ImageAlt:  "Photo from October 1st 2022 meetup at Redwing, Minnesota",
-			Name:      "Outdoor Climbing - He Mni Can (Barn Bluff) / Redwing MN",
+			Category: OutdoorClimbing,
+			Date:     "Sunday July 30th",
+			Image:    "/static/images/redwing.webp",
+			ImageAlt: "Photo from October 1st 2022 meetup at Redwing, Minnesota",
+			Links: []Link{
+				{
+					Text: "Donate",
+					URL:  "https://gofund.me/ca5465d4",
+				},
+				{
+					OpenTime: 1690034400,
+					Text:     "Register",
+					URL:      "https://forms.gle/EiELipRCeMUooZPm6",
+				},
+			},
+			Name:      "Outdoor Climbing - He Mni Can (Barn Bluff) / Red Wing MN",
 			Route:     "20230730-outdoor-climbing-he-mni-can-barn-bluff",
 			Time:      "9:20am",
 			Timestamp: 1690693200,
