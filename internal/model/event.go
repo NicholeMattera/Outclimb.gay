@@ -1,9 +1,18 @@
 package model
 
+type Category string
+
+const (
+	RegularMeetup   Category = "regular-meetup"
+	OutdoorClimbing Category = "outdoor-climbing"
+	SkillsShare     Category = "skills-share"
+)
+
 type EventMap map[string]Event
 
 type Event struct {
 	Body      string
+	Category  Category
 	Date      string
 	Image     string
 	ImageAlt  string
@@ -29,6 +38,7 @@ func GetEvents() EventMap {
 <p>
 	If it's your first time attending OutClimb tell the front desk and receive a free day pass with shoe rentals! If you've climbed with us before tell the front desk to receive a discounted day pass with shoe rentals for $12 (+tax)!</p><h2>First time at Minneapolis Bouldering Project?</h2><p>Fill out a waiver in advance and show up 15 minutes early to complete the tour and orientation before the event!
 </p>`,
+			Category:  RegularMeetup,
 			Date:      "First and third Thursday of every month",
 			Image:     "/static/images/mbp.webp",
 			ImageAlt:  "Photo from April 20th 2023 meetup at Minneapolis Bouldering Project",
@@ -73,6 +83,7 @@ func GetEvents() EventMap {
 <p>
 	This is a very popular climbing area and one of the first nice weekends of the year. We will not take up unused space and leave the ropes on the wall any longer than we have to, so do your best to get there at 9:30am if you want to climb all the routes we set up. Otherwise please inform us if you plan on arriving late so we can see if there is a route available at your level when you arrive.
 </p>`,
+			Category:  OutdoorClimbing,
 			Date:      "Saturday May 6th",
 			Image:     "/static/images/taylor_falls.webp",
 			ImageAlt:  "Photo from Interstate Park along the Minnesota Strip looking out on to the St. Croix River",
@@ -111,6 +122,7 @@ func GetEvents() EventMap {
 <p>
 	This is a very popular climbing area and one of the first nice weekends of the year. We will not take up unused space and leave the ropes on the wall any longer than we have to, so do your best to get there at 9:30am if you want to climb all the routes we set up. Otherwise please inform us if you plan on arriving late so we can see if there is a route available at your level when you arrive.
 </p>`,
+			Category:  OutdoorClimbing,
 			Date:      "Saturday May 27th",
 			Image:     "/static/images/taylor_falls.webp",
 			ImageAlt:  "Photo from Interstate Park along the Minnesota Strip looking out on to the St. Croix River",
@@ -119,7 +131,7 @@ func GetEvents() EventMap {
 			Time:      "9:30am",
 			Timestamp: 1685163600,
 		},
-		"20230716-outdoor-climbing-sugar-loaf-bluff": {
+		"20230716-outdoor-skills-sharing-sugar-loaf-bluff": {
 			Body: `
 <p>
 	This event is weather permitting, and open for queer climbers that have registered for the skills share only. We will notify registered climbers as early as possible of any changes.
@@ -171,13 +183,12 @@ func GetEvents() EventMap {
 <p>
 	If you plan on participating in the car pool we will meet at 7am, as it is a 2 hour drive. The carpool meets at the Park & Ride at 1559 Eustis in St Paul. (appox Hwy 280 and Como Ave)
 </p>`,
+			Category:  SkillsShare,
 			Date:      "Sunday July 16th",
 			Image:     "/static/images/sugar_loaf.webp",
 			ImageAlt:  "Photo from on top of Sugar Loaf Bluff with a transgender flag planted looking out towards Winona, Minnesota",
-			Link:      "https://forms.gle/U99GJ7kafQmVyai37",
-			LinkText:  "Register",
-			Name:      "Outdoor Climbing - Sugar Loaf Bluff / Winona, MN",
-			Route:     "20230716-outdoor-climbing-sugar-loaf-bluff",
+			Name:      "Outdoor Skills Sharing - Sugar Loaf Bluff / Winona, MN",
+			Route:     "20230716-outdoor-skills-sharing-sugar-loaf-bluff",
 			Time:      "9:00am",
 			Timestamp: 1689483600,
 		},
@@ -214,6 +225,7 @@ func GetEvents() EventMap {
 <p>
 	This is a very popular climbing and large climbing area. We will ber moving wherever we can to find open routes and won't leave ropes on the wall any longer than we have to. Do your best to get there at 9:30am if you want to have an easy time finding us and climb all the routes we set up. Otherwise please inform us if you plan on arriving late so we can trt to keep our phones on.
 </p>`,
+			Category:  OutdoorClimbing,
 			Date:      "Sunday July 30th",
 			Image:     "/static/images/redwing.webp",
 			ImageAlt:  "Photo from October 1st 2022 meetup at Redwing, Minnesota",
@@ -221,6 +233,20 @@ func GetEvents() EventMap {
 			Route:     "20230730-outdoor-climbing-he-mni-can-barn-bluff",
 			Time:      "9:20am",
 			Timestamp: 1690693200,
+		},
+		"20230813-outdoor-skills-sharing-interstate-state-park": {
+			Body: `
+<p>
+	More Information to come.
+</p>`,
+			Category:  SkillsShare,
+			Date:      "Sunday August 13th",
+			Image:     "/static/images/taylor_falls.webp",
+			ImageAlt:  "Photo from Interstate Park along the Minnesota Strip looking out on to the St. Croix River",
+			Name:      "Outdoor Skills Sharing - Interstate State Park",
+			Route:     "20230813-outdoor-skills-sharing-interstate-state-park",
+			Time:      "",
+			Timestamp: 1691884800,
 		},
 	}
 }
