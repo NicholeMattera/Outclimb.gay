@@ -33,6 +33,32 @@ func LatestEventHandler(category model.Category) http.Handler {
 	})
 }
 
+func LatestRegisterEventHandler() http.Handler {
+	events := maps.Values(model.GetEvents())
+	slices.SortFunc(events, func(a, b model.Event) bool {
+		return a.Timestamp < b.Timestamp
+	})
+
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		now := time.Now().Unix()
+
+		for _, event := range events {
+			if len(event.Links) == 0 {
+				continue
+			}
+
+			for _, link := range event.Links {
+				if link.Text == "Register" && link.OpenTime <= now {
+					http.Redirect(w, r, link.URL, http.StatusTemporaryRedirect)
+					return
+				}
+			}
+		}
+
+		http.Redirect(w, r, "https://"+r.Host, http.StatusTemporaryRedirect)
+	})
+}
+
 func EventHandler() http.Handler {
 	events := model.GetEvents()
 

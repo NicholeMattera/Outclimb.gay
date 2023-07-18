@@ -27,5 +27,6 @@ func SetupRouter(mux *http.ServeMux) {
 
 	mux.Handle("/update/", http.RedirectHandler("https://outclimb.gay/events/20230527-outdoor-climbing-saint-croix-falls", http.StatusTemporaryRedirect))
 	mux.Handle("/donate/", http.RedirectHandler("https://gofund.me/ca5465d4", http.StatusTemporaryRedirect))
+	mux.Handle("/register/", LatestRegisterEventHandler())
 	mux.Handle("/contact/", ContactHandler())
 }
