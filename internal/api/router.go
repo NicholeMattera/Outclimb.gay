@@ -21,6 +21,7 @@ func SetupRouter(mux *http.ServeMux) {
 	mux.Handle("/events/20230527-outdoor-climbing-taylor-falls/", http.RedirectHandler("https://outclimb.gay/events/20230527-outdoor-climbing-saint-croix-falls", http.StatusPermanentRedirect))
 	mux.Handle("/events/20230527-outdoor-climbing-saint-croix-falls/", EventHandler())
 	mux.Handle("/events/20230716-outdoor-skills-sharing-sugar-loaf-bluff/", EventHandler())
+	mux.Handle("/events/20230716-outdoor-climbing-sugar-loaf-bluff/ ", http.RedirectHandler("https://outclimb.gay/events/20230716-outdoor-skills-sharing-sugar-loaf-bluff/", http.StatusTemporaryRedirect))
 	mux.Handle("/events/20230730-outdoor-climbing-he-mni-can-barn-bluff/", EventHandler())
 	mux.Handle("/events/20230813-outdoor-skills-sharing-interstate-state-park/", EventHandler())
 
