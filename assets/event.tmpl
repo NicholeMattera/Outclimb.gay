@@ -20,7 +20,11 @@
 
             {{ .Body }}
             
-            {{ if .Link }}<a href="{{ .Link }}" target="_blank" class="button">{{ .LinkText }}</a>{{ end }}
+            {{range $Link := .Links}}
+                {{if $Link.Show }}
+                    <a href="{{ $Link.URL }}" target="_blank" class="button">{{ $Link.Text }}</a>
+                {{end}}
+            {{end}}
         </section>
     </body>
 </html>

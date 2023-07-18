@@ -8,6 +8,13 @@ const (
 	SkillsShare     Category = "skills-share"
 )
 
+type Link struct {
+	OpenTime int64
+	Show     bool
+	Text     string
+	URL      string
+}
+
 type EventMap map[string]Event
 
 type Event struct {
@@ -16,8 +23,7 @@ type Event struct {
 	Date      string
 	Image     string
 	ImageAlt  string
-	Link      string
-	LinkText  string
+	Links     []Link
 	Name      string
 	Route     string
 	Time      string
@@ -38,12 +44,16 @@ func GetEvents() EventMap {
 <p>
 	If it's your first time attending OutClimb tell the front desk and receive a free day pass with shoe rentals! If you've climbed with us before tell the front desk to receive a discounted day pass with shoe rentals for $12 (+tax)!</p><h2>First time at Minneapolis Bouldering Project?</h2><p>Fill out a waiver in advance and show up 15 minutes early to complete the tour and orientation before the event!
 </p>`,
-			Category:  RegularMeetup,
-			Date:      "First and third Thursday of every month",
-			Image:     "/static/images/mbp.webp",
-			ImageAlt:  "Photo from April 20th 2023 meetup at Minneapolis Bouldering Project",
-			Link:      "https://waiver.smartwaiver.com/w/5ef37be079be7/web/",
-			LinkText:  "Waiver",
+			Category: RegularMeetup,
+			Date:     "First and third Thursday of every month",
+			Image:    "/static/images/mbp.webp",
+			ImageAlt: "Photo from April 20th 2023 meetup at Minneapolis Bouldering Project",
+			Links: []Link{
+				{
+					Text: "Waiver",
+					URL:  "https://waiver.smartwaiver.com/w/5ef37be079be7/web/",
+				},
+			},
 			Name:      "Bouldering Meetup - Minneapolis Bouldering Project",
 			Route:     "bouldering-meetup-minneapolis-bouldering-project",
 			Time:      "7:00pm - 9:00pm",

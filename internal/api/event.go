@@ -51,6 +51,11 @@ func EventHandler() http.Handler {
 			return
 		}
 
+		now := time.Now().Unix()
+		for index, link := range event.Links {
+			event.Links[index].Show = link.OpenTime <= now
+		}
+
 		template.Execute(w, event)
 	})
 }
