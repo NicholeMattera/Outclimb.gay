@@ -3,92 +3,88 @@ package api
 import (
 	"log"
 	"net/http"
-	"net/url"
-	"strings"
 	"text/template"
 	"time"
 
 	"github.com/NicholeMattera/Outclimb.gay/internal/model"
-	"golang.org/x/exp/maps"
-	"golang.org/x/exp/slices"
+	"github.com/gin-gonic/gin"
 )
 
-func LatestEventHandler(category model.Category) http.Handler {
-	events := maps.Values(model.GetEvents())
-	slices.SortFunc(events, func(a, b model.Event) bool {
-		return a.Timestamp < b.Timestamp
-	})
-
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		now := time.Now().Unix()
-
-		for _, event := range events {
-			if event.Timestamp+86400 > now && event.Category == category {
-				http.Redirect(w, r, "https://"+r.Host+"/events/"+event.Route, http.StatusTemporaryRedirect)
-				return
-			}
-		}
-
-		http.Redirect(w, r, "https://"+r.Host, http.StatusTemporaryRedirect)
-	})
+type eventUriBinding struct {
+	Slug string `uri:"slug" binding:"required"`
 }
 
-func LatestRegisterEventHandler() http.Handler {
-	events := maps.Values(model.GetEvents())
-	slices.SortFunc(events, func(a, b model.Event) bool {
-		return a.Timestamp < b.Timestamp
-	})
-
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		now := time.Now().Unix()
-
-		for _, event := range events {
-			if len(event.Links) == 0 {
-				continue
-			}
-
-			for _, link := range event.Links {
-				if link.Text == "Register" && link.OpenTime <= now {
-					http.Redirect(w, r, link.URL, http.StatusTemporaryRedirect)
-					return
-				}
-			}
-		}
-
-		http.Redirect(w, r, "https://"+r.Host, http.StatusTemporaryRedirect)
-	})
+type EventHandler struct {
+	eventTemplate *template.Template
 }
 
-func EventHandler() http.Handler {
-	events := model.GetEvents()
+func NewEventHandler(router *gin.Engine) {
+	eventHandler := &EventHandler{}
 
 	template, err := template.ParseFiles("assets/event.tmpl")
 	if err != nil {
 		log.Fatal("Error: Unable to parse the template file. (Event)")
-		return nil
+		return
 	}
 
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		eventId := getEventIdFromURL(r.URL)
+	eventHandler.eventTemplate = template
 
-		event, exists := events[eventId]
-		if !exists {
-			w.WriteHeader(http.StatusNotFound)
-			return
-		}
-
-		now := time.Now().Unix()
-		for index, link := range event.Links {
-			event.Links[index].Show = link.OpenTime <= now
-		}
-
-		template.Execute(w, event)
-	})
+	eventsRouterGroup := router.Group("/events")
+	eventsRouterGroup.GET("/outdoor-climbing", eventHandler.OutdoorClimbingRedirect)
+	eventsRouterGroup.GET("/outdoor-skills-sharing", eventHandler.OutdoorSkillsSharingRedirect)
+	eventsRouterGroup.GET("/:slug", eventHandler.Event)
 }
 
-func getEventIdFromURL(url *url.URL) string {
-	path := strings.TrimSuffix(url.Path, "/")
-	pathFragments := strings.Split(path, "/")
+func (*EventHandler) getURL(r *http.Request, path string) string {
+	schema := "https://"
+	if r.TLS == nil {
+		schema = "http://"
+	}
 
-	return pathFragments[len(pathFragments)-1]
+	return schema + r.Host + path
+}
+
+func (e *EventHandler) OutdoorClimbingRedirect(c *gin.Context) {
+	event := model.GetNextEvent(model.OutdoorClimbing)
+	if event == nil {
+		c.Redirect(http.StatusTemporaryRedirect, e.getURL(c.Request, "/"))
+	}
+
+	c.Redirect(http.StatusTemporaryRedirect, e.getURL(c.Request, "/events/"+event.Route))
+}
+
+func (e *EventHandler) OutdoorSkillsSharingRedirect(c *gin.Context) {
+	event := model.GetNextEvent(model.SkillsShare)
+	if event == nil {
+		c.Redirect(http.StatusTemporaryRedirect, e.getURL(c.Request, "/"))
+	}
+
+	c.Redirect(http.StatusTemporaryRedirect, e.getURL(c.Request, "/events/"+event.Route))
+}
+
+func (e *EventHandler) Event(c *gin.Context) {
+	var eventBinding eventUriBinding
+	if err := c.ShouldBindUri(&eventBinding); err != nil {
+		c.Redirect(http.StatusTemporaryRedirect, e.getURL(c.Request, "/"))
+		return
+	}
+
+	slug, exists := model.GetRedirectSlug(eventBinding.Slug)
+	if exists {
+		c.Redirect(http.StatusPermanentRedirect, e.getURL(c.Request, "/events/"+slug))
+		return
+	}
+
+	event := model.GetEvent(eventBinding.Slug)
+	if event == nil {
+		c.Redirect(http.StatusTemporaryRedirect, e.getURL(c.Request, "/"))
+		return
+	}
+
+	now := time.Now().Unix()
+	for index, link := range event.Links {
+		event.Links[index].Show = link.OpenTime <= now
+	}
+
+	e.eventTemplate.Execute(c.Writer, event)
 }

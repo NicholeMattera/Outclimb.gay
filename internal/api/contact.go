@@ -2,18 +2,29 @@ package api
 
 import (
 	"log"
-	"net/http"
 	"text/template"
+
+	"github.com/gin-gonic/gin"
 )
 
-func ContactHandler() http.Handler {
+type ContactHandler struct {
+	contactTemplate *template.Template
+}
+
+func NewContactHandler(router *gin.Engine) {
+	contactHandler := &ContactHandler{}
+
 	template, err := template.ParseFiles("assets/contact.tmpl")
 	if err != nil {
 		log.Fatal("Error: Unable to parse the template file. (Contact)")
-		return nil
+		return
 	}
 
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		template.Execute(w, nil)
-	})
+	contactHandler.contactTemplate = template
+
+	router.GET("/contact", contactHandler.Contact)
+}
+
+func (ch *ContactHandler) Contact(c *gin.Context) {
+	ch.contactTemplate.Execute(c.Writer, nil)
 }

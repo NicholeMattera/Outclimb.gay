@@ -1,5 +1,12 @@
 package model
 
+import (
+	"time"
+
+	"golang.org/x/exp/maps"
+	"golang.org/x/exp/slices"
+)
+
 type Category string
 
 const (
@@ -275,4 +282,44 @@ func GetEvents() EventMap {
 			Timestamp: 1691884800,
 		},
 	}
+}
+
+func GetEvent(slug string) *Event {
+	events := GetEvents()
+
+	event, exists := events[slug]
+	if !exists {
+		return nil
+	}
+
+	return &event
+}
+
+func GetNextEvent(category Category) *Event {
+	now := time.Now().Unix()
+
+	events := maps.Values(GetEvents())
+	slices.SortFunc(events, func(a, b Event) bool {
+		return a.Timestamp < b.Timestamp
+	})
+
+	for _, event := range events {
+		if event.Timestamp+86400 > now && event.Category == category {
+			return &event
+		}
+	}
+
+	return nil
+}
+
+func GetRedirectSlug(slug string) (string, bool) {
+	if slug == "20230527-outdoor-climbing-taylor-falls" {
+		return "20230527-outdoor-climbing-saint-croix-falls", true
+	}
+
+	if slug == "20230716-outdoor-climbing-sugar-loaf-bluff" {
+		return "20230716-outdoor-skills-sharing-sugar-loaf-bluff", true
+	}
+
+	return "", false
 }
