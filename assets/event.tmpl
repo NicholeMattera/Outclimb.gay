@@ -15,15 +15,13 @@
             <hgroup>
                 <img src="{{ .Image }}" alt="{{ .ImageAlt }}">
                 <h1>{{ .Name }}</h1>
-                <p>In-Person | {{ .Date }} • {{ .Time }}</p>
+                <p>In-Person | {{ .StartDate }} • {{ .StartTime }}</p>
             </hgroup>
 
             {{ .Body }}
             
             {{range $Link := .Links}}
-                {{if $Link.Show }}
-                    <a href="{{ $Link.URL }}" target="_blank" class="button">{{ $Link.Text }}</a>
-                {{end}}
+                <a href="{{ $Link.URL }}" target="_blank" class="button">{{ $Link.Name }}</a>
             {{end}}
         </section>
     </body>

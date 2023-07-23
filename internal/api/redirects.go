@@ -1,13 +1,12 @@
 package api
 
 import (
+	"database/sql"
 	"net/http"
-	"time"
 
+	"github.com/NicholeMattera/Outclimb.gay/internal/api/middleware"
 	"github.com/NicholeMattera/Outclimb.gay/internal/model"
 	"github.com/gin-gonic/gin"
-	"golang.org/x/exp/maps"
-	"golang.org/x/exp/slices"
 )
 
 type RedirectHandler struct{}
@@ -29,30 +28,17 @@ func (*RedirectHandler) Donate(c *gin.Context) {
 }
 
 func (*RedirectHandler) Register(c *gin.Context) {
-	now := time.Now().Unix()
-
-	events := maps.Values(model.GetEvents())
-	slices.SortFunc(events, func(a, b model.Event) bool {
-		return a.Timestamp < b.Timestamp
-	})
-
-	for _, event := range events {
-		if len(event.Links) == 0 {
-			continue
-		}
-
-		for _, link := range event.Links {
-			if link.Text == "Register" && link.OpenTime <= now {
-				c.Redirect(http.StatusTemporaryRedirect, link.URL)
-				return
-			}
-		}
-	}
+	db, _ := c.Get(middleware.DatabaseKey)
 
 	schema := "https://"
 	if c.Request.TLS == nil {
 		schema = "http://"
 	}
 
-	c.Redirect(http.StatusTemporaryRedirect, schema+c.Request.Host)
+	link, err := model.GetNextRegisterLink(db.(*sql.DB))
+	if err != nil || len(link.URL) == 0 {
+		c.Redirect(http.StatusTemporaryRedirect, schema+c.Request.Host)
+	}
+
+	c.Redirect(http.StatusTemporaryRedirect, link.URL)
 }

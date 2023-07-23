@@ -1,11 +1,12 @@
 package api
 
 import (
+	"database/sql"
 	"log"
 	"net/http"
 	"text/template"
-	"time"
 
+	"github.com/NicholeMattera/Outclimb.gay/internal/api/middleware"
 	"github.com/NicholeMattera/Outclimb.gay/internal/model"
 	"github.com/gin-gonic/gin"
 )
@@ -45,21 +46,23 @@ func (*EventHandler) getURL(r *http.Request, path string) string {
 }
 
 func (e *EventHandler) OutdoorClimbingRedirect(c *gin.Context) {
-	event := model.GetNextEvent(model.OutdoorClimbing)
-	if event == nil {
+	db, _ := c.Get(middleware.DatabaseKey)
+	event, err := model.GetNextEvent(db.(*sql.DB), model.OutdoorClimbing)
+	if err != nil {
 		c.Redirect(http.StatusTemporaryRedirect, e.getURL(c.Request, "/"))
 	}
 
-	c.Redirect(http.StatusTemporaryRedirect, e.getURL(c.Request, "/events/"+event.Route))
+	c.Redirect(http.StatusTemporaryRedirect, e.getURL(c.Request, "/events/"+event.Slug))
 }
 
 func (e *EventHandler) OutdoorSkillsSharingRedirect(c *gin.Context) {
-	event := model.GetNextEvent(model.SkillsShare)
-	if event == nil {
+	db, _ := c.Get(middleware.DatabaseKey)
+	event, err := model.GetNextEvent(db.(*sql.DB), model.SkillsShare)
+	if err != nil {
 		c.Redirect(http.StatusTemporaryRedirect, e.getURL(c.Request, "/"))
 	}
 
-	c.Redirect(http.StatusTemporaryRedirect, e.getURL(c.Request, "/events/"+event.Route))
+	c.Redirect(http.StatusTemporaryRedirect, e.getURL(c.Request, "/events/"+event.Slug))
 }
 
 func (e *EventHandler) Event(c *gin.Context) {
@@ -75,16 +78,12 @@ func (e *EventHandler) Event(c *gin.Context) {
 		return
 	}
 
-	event := model.GetEvent(eventBinding.Slug)
-	if event == nil {
+	db, _ := c.Get(middleware.DatabaseKey)
+	event, err := model.GetEvent(db.(*sql.DB), eventBinding.Slug)
+	if err != nil {
 		c.Redirect(http.StatusTemporaryRedirect, e.getURL(c.Request, "/"))
 		return
 	}
 
-	now := time.Now().Unix()
-	for index, link := range event.Links {
-		event.Links[index].Show = link.OpenTime <= now
-	}
-
-	e.eventTemplate.Execute(c.Writer, event)
+	e.eventTemplate.Execute(c.Writer, event.Public())
 }
