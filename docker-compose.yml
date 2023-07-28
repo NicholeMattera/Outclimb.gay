@@ -1,0 +1,50 @@
+version: '3.8'
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: dockerfile.backend 
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      OUTCLIMB_DB_HOST: db
+      OUTCLIMB_DB_NAME: outclimb
+      OUTCLIMB_DB_USER: outclimb
+      OUTCLIMB_DB_PASSWORD: change-this
+    healthcheck:
+      test: ['CMD-SHELL', 'curl -f http://localhost:8080/api/v1/ping']
+      interval: 3s
+      retries: 5
+      start_period: 30s
+    restart: always
+
+  db:
+    command: '--default-authentication-plugin=mysql_native_password'
+    environment:
+      MARIADB_DATABASE: outclimb
+      MARIADB_USER: outclimb
+      MARIADB_PASSWORD: change-this
+    healthcheck:
+      test: ['CMD-SHELL', 'mariadb-admin ping -h 127.0.0.1 -u $$MARIADB_USER --password=$$MARIADB_PASSWORD']
+      interval: 3s
+      retries: 5
+      start_period: 30s
+    image: mariadb
+    restart: always
+    volumes:
+      - db-data:/var/lib/mysql
+
+  frontend:
+    build:
+      context: .
+      dockerfile: dockerfile.frontend
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - 80:80
+    restart: always
+
+volumes:
+  db-data:

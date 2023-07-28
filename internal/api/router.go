@@ -7,13 +7,11 @@ import (
 
 func SetupRouter() *gin.Engine {
 	router := gin.Default()
-	router.Use(middleware.Database)
+	router.Use(middleware.Database())
 
-	router.Static("/static", "./static")
-
-	NewRedirectHandler(router)
-	NewEventHandler(router)
-	NewContactHandler(router)
+	apiV1RouterGroup := router.Group("/api/v1")
+	NewPingHandler(apiV1RouterGroup)
+	NewEventHandler(apiV1RouterGroup)
 
 	return router
 }

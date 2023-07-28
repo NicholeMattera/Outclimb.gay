@@ -19,6 +19,8 @@ func main() {
 	// Setup our routes
 	r := api.SetupRouter()
 
+	r.SetTrustedProxies([]string{"127.0.0.1"})
+
 	// Run the server
 	r.Run(":8080")
 }
