@@ -1,5 +1,6 @@
 import Contact from './views/Contact/Contact.tsx';
 import Event from './views/Event/Event.tsx';
+import Events from './views/Events/Events.tsx';
 import Home from './views/Home/Home.tsx';
 import NotFound from './views/NotFound/NotFound.tsx';
 import React from 'react'
@@ -16,6 +17,10 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <Home />,
+    },
+    {
+        path: '/events',
+        element: <Events />
     },
     {
         path: '/events/:eventId',
