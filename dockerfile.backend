@@ -1,5 +1,7 @@
 FROM golang:1.20-alpine
 
+RUN apk --no-cache add curl
+
 COPY . /usr/src/app
 WORKDIR /usr/src/app
 
