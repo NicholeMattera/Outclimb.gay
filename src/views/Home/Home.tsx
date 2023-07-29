@@ -1,11 +1,13 @@
+import Header from 'components/Header/Header';
+
 import './Home.scss'
 
 function Home() {
-  return (
-    <>
-      <h1>Outclimb</h1>
-    </>
-  )
+    return (
+        <>
+            <Header />
+        </>
+    )
 }
 
 export default Home

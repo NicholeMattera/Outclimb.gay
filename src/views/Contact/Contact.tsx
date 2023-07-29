@@ -1,11 +1,13 @@
+import Header from 'components/Header/Header';
+
 import './Contact.scss'
 
 function Contact() {
-  return (
-    <>
-      <h1>Outclimb - Contact</h1>
-    </>
-  )
+    return (
+        <>
+            <Header />
+        </>
+    )
 }
 
 export default Contact
