@@ -1,4 +1,4 @@
-export type LinkResponse = {
+type LinkResponse = {
 	Name: string
 	URL:  string
 };
