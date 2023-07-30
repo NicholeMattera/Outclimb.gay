@@ -3,6 +3,7 @@ import useDocumentTitle from 'hooks/useDocumentTitle';
 import EventResponse from 'types/EventResponse';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 import './Events.scss';
 
@@ -37,7 +38,7 @@ function Events() {
             {!isLoading && error !== null && <h2>{error.toString()}</h2>}
             {!isLoading && error === null && events.map((event) => (
                 <div>
-                    <h2>{event.Name}</h2>
+                    <h2><Link to={`/events/${event.Slug}`}>{event.Name}</Link></h2>
                 </div>
             ))}
         </>
