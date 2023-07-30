@@ -1,7 +1,7 @@
-import SlotProps from 'types/SlotProps';
+import SlotProps from 'types/SlotProps'
 
 function Slot({ children }: SlotProps) {
-    return children;
+    return children
 }
 
 export default Slot

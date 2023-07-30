@@ -1,0 +1,5 @@
+assets/
+cmd/
+dist/
+internal/
+node_modules/

@@ -1,15 +1,11 @@
-import Contact from './views/Contact/Contact.tsx';
-import Event from './views/Event/Event.tsx';
-import Events from './views/Events/Events.tsx';
-import Home from './views/Home/Home.tsx';
-import NotFound from './views/NotFound/NotFound.tsx';
+import Contact from './views/Contact/Contact.tsx'
+import Event from './views/Event/Event.tsx'
+import Events from './views/Events/Events.tsx'
+import Home from './views/Home/Home.tsx'
+import NotFound from './views/NotFound/NotFound.tsx'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import {
-    createBrowserRouter,
-    Navigate,
-    RouterProvider,
-} from 'react-router-dom';
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 
 import './index.css'
 
@@ -20,11 +16,11 @@ const router = createBrowserRouter([
     },
     {
         path: '/events',
-        element: <Events />
+        element: <Events />,
     },
     {
         path: '/events/:eventId',
-        element: <Event />
+        element: <Event />,
     },
     {
         path: '/contact',
@@ -36,9 +32,9 @@ const router = createBrowserRouter([
     },
     {
         path: '*',
-        element: <Navigate to='/404' replace />
+        element: <Navigate to="/404" replace />,
     },
-]);
+])
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
     <React.StrictMode>
