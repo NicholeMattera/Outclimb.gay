@@ -1,0 +1,48 @@
+@import 'styles/colors.scss';
+
+@font-face {
+    font-family: 'Montserrat';
+    font-weight: bold;
+    src: local('Montserrat'), url('/fonts/montserrat-bold.ttf');
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    font-weight: normal;
+    src: local('Montserrat'), url('/fonts/montserrat-regular.ttf');
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    background: $light_theme_background;
+    color: $light_theme_color;
+    font-family: Montserrat, Arial, Helvetica, sans-serif;
+    margin: 0;
+    min-height: 100dvh;
+}
+
+a {
+    color: $light_theme_color;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+        text-decoration: underline;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    html,
+    body {
+        background: $dark_theme_background;
+        color: $dark_theme_color;
+    }
+
+    a {
+        color: $dark_theme_color;
+    }
+}

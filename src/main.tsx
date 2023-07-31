@@ -7,7 +7,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 
-import './index.css'
+import './index.scss'
 
 const router = createBrowserRouter([
     {
