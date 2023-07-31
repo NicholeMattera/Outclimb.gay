@@ -1,4 +1,5 @@
 import Header from 'components/Header/Header'
+import PageContent from 'components/PageContent/PageContent'
 import useDocumentTitle from 'hooks/useDocumentTitle'
 import EventResponse from 'types/EventResponse'
 import axios from 'axios'
@@ -37,9 +38,11 @@ function Event() {
     return (
         <>
             <Header />
-            {isLoading && <p>Loading</p>}
-            {!isLoading && error === null && <h2>{event?.Name}</h2>}
-            {!isLoading && error !== null && <h2>{error.toString()}</h2>}
+            <PageContent>
+                {isLoading && <p>Loading</p>}
+                {!isLoading && error === null && <h2>{event?.Name}</h2>}
+                {!isLoading && error !== null && <h2>{error.toString()}</h2>}
+            </PageContent>
         </>
     )
 }
