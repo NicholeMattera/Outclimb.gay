@@ -1,6 +1,8 @@
+@import 'styles/colors.scss';
+
 header {
     align-items: center;
-    background: #eceff1;
+    background: $light_theme_background;
     display: flex;
     font-size: 16px;
     height: 64px;
@@ -15,16 +17,32 @@ header {
     }
 
     a {
-        text-decoration: none;
+        display: block;
+        padding: 0 16px;
     }
 
-    h1,
+    a:focus {
+        outline-color: $deep_purple_200;
+        outline-offset: 2px;
+        outline-style: solid;
+        outline-width: 2px;
+    }
+
+    *:not(img) {
+        height: 100%;
+    }
+
+    .logo,
     .socialLinks {
         flex: 0 1 auto;
     }
 
-    h1 {
-        margin: 0 16px;
+    .logo {
+        margin: 0;
+    }
+
+    .logo img {
+        margin: 16px 0;
     }
 
     nav {
@@ -39,7 +57,35 @@ header {
 
         li {
             margin: 0;
-            padding: 8px 16px;
+            padding: 0;
+
+            a {
+                line-height: 64px;
+            }
         }
+    }
+
+    .facebook:hover,
+    .facebook:focus {
+        color: $facebook;
+        text-decoration: none;
+    }
+
+    .discord:hover,
+    .discord:focus {
+        color: $discord;
+        text-decoration: none;
+    }
+
+    .instagram:hover,
+    .instagram:focus {
+        color: $instagram;
+        text-decoration: none;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    header {
+        background: $dark_theme_background;
     }
 }

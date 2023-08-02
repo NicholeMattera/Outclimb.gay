@@ -1,4 +1,4 @@
-import useSlots from 'hooks/useSlot'
+import useSlots from 'hooks/useSlots'
 import React from 'react'
 
 import './PageContent.scss'

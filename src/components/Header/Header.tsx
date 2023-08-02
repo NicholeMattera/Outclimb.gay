@@ -1,19 +1,29 @@
 import classNames from 'classnames'
+import useDarkMode from 'hooks/useDarkMode'
 import useWindowScroll from 'hooks/useWindowScroll'
+import { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 
 import './Header.scss'
 
 function Header() {
+    const darkMode = useDarkMode()
     const windowScrollPosition = useWindowScroll()
     const headerClass = classNames({
         shadow: windowScrollPosition[1] > 0,
     })
 
+    const [headerImage, setHeaderImage] = useState(darkMode ? '/images/logo_dark.webp' : '/images/logo_light.webp')
+    useEffect(() => {
+        setHeaderImage(darkMode ? '/images/logo_dark.webp' : '/images/logo_light.webp')
+    }, [darkMode])
+
     return (
         <header className={headerClass}>
             <h1 className="logo">
-                <Link to="/">Outclimb</Link>
+                <Link to="/">
+                    <img src={headerImage} height="32" />
+                </Link>
             </h1>
             <nav>
                 <ul>
@@ -27,19 +37,29 @@ function Header() {
             </nav>
             <ul className="socialLinks">
                 <li>
-                    <a href="https://www.facebook.com/groups/1070762049768453" target="_blank" rel="noreferrer">
+                    <a
+                        className="facebook"
+                        href="https://www.facebook.com/groups/1070762049768453"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
                         <i aria-hidden="true" className="fa-brands fa-square-facebook"></i>
                         <span className="fa-sr-only">Facebook Group</span>
                     </a>
                 </li>
                 <li>
-                    <a href="https://www.instagram.com/outclimbmn" target="_blank" rel="noreferrer">
+                    <a
+                        className="instagram"
+                        href="https://www.instagram.com/outclimbmn"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
                         <i aria-hidden="true" className="fa-brands fa-square-instagram"></i>
                         <span className="fa-sr-only">Instagram</span>
                     </a>
                 </li>
                 <li>
-                    <a href="https://discord.outclimb.gay" target="_blank" rel="noreferrer">
+                    <a className="discord" href="https://discord.outclimb.gay" target="_blank" rel="noreferrer">
                         <i aria-hidden="true" className="fa-brands fa-discord"></i>
                         <span className="fa-sr-only">Discord Server</span>
                     </a>
