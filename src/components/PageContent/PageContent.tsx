@@ -1,12 +1,9 @@
-import useSlots from 'hooks/useSlots'
 import React from 'react'
 
 import './PageContent.scss'
 
 function PageContent({ children }: { children?: React.ReactNode }) {
-    const slots = useSlots(children)
-
-    return <main>{slots.default}</main>
+    return <main className="page-content">{children}</main>
 }
 
 export default PageContent

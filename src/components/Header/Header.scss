@@ -1,6 +1,6 @@
 @import 'styles/colors.scss';
 
-header {
+.header {
     align-items: center;
     background: $light_theme_background;
     display: flex;
@@ -11,8 +11,9 @@ header {
     top: 0;
     transition: box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     width: 100%;
+    z-index: 1;
 
-    &.shadow {
+    &--shadow {
         box-shadow: rgba(0, 0, 0, 0.12) 0 2px 4px 0;
     }
 
@@ -23,7 +24,6 @@ header {
 
     a:focus {
         outline-color: $deep_purple_200;
-        outline-offset: 2px;
         outline-style: solid;
         outline-width: 2px;
     }
@@ -32,20 +32,20 @@ header {
         height: 100%;
     }
 
-    .logo,
-    .socialLinks {
+    &__logo,
+    &__social-links {
         flex: 0 1 auto;
     }
 
-    .logo {
+    &__logo {
         margin: 0;
     }
 
-    .logo img {
+    &__logo img {
         margin: 16px 0;
     }
 
-    nav {
+    &__navigation {
         flex: 1 1 auto;
     }
 
@@ -65,27 +65,27 @@ header {
         }
     }
 
-    .facebook:hover,
-    .facebook:focus {
+    &__facebook:hover,
+    &__facebook:focus {
         color: $facebook;
         text-decoration: none;
     }
 
-    .discord:hover,
-    .discord:focus {
+    &__discord:hover,
+    &__discord:focus {
         color: $discord;
         text-decoration: none;
     }
 
-    .instagram:hover,
-    .instagram:focus {
+    &__instagram:hover,
+    &__instagram:focus {
         color: $instagram;
         text-decoration: none;
     }
 }
 
 @media (prefers-color-scheme: dark) {
-    header {
+    .header {
         background: $dark_theme_background;
     }
 }
