@@ -1,0 +1,79 @@
+@import 'styles/colors.scss';
+
+.hero {
+    height: 480px;
+    position: relative;
+
+    &__image {
+        background-size: cover;
+        border-radius: 12px;
+        height: 100%;
+        left: 0;
+        position: absolute;
+        top: 0;
+        width: 100%;
+    }
+
+    &__content {
+        background: $light_theme_background;
+        border-radius: 0px 16px 0px 0px;
+        bottom: 0;
+        left: 0;
+        padding: 8px 24px 8px 8px;
+        position: absolute;
+        width: 60%;
+
+        &:hover {
+            text-decoration: none;
+        }
+
+        &:focus {
+            outline-color: $deep_purple_200;
+            outline-style: solid;
+            outline-width: 2px;
+            text-decoration: none;
+        }
+
+        h2 {
+            font-size: 40px;
+            margin: 16px 0 8px;
+        }
+
+        p {
+            font-size: 20px;
+            margin: 12px 0 0;
+        }
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .hero__content {
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .hero {
+        height: 380px;
+
+        &__content {
+            border-radius: 0;
+            padding: 8px;
+            width: 100%;
+
+            h2 {
+                font-size: 28px;
+            }
+
+            p {
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .hero__content {
+        background: $dark_theme_background;
+    }
+}
