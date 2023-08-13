@@ -1,47 +1,32 @@
+import './Event.scss'
 import Header from 'components/Header/Header'
 import PageContent from 'components/PageContent/PageContent'
 import useDocumentTitle from 'hooks/useDocumentTitle'
-import EventResponse from 'types/EventResponse'
-import axios from 'axios'
+import useEventStore from 'stores/useEventStore'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-
-import './Event.scss'
 
 function Event() {
     const [title, setTitle] = useState('Event | OutClimb')
     useDocumentTitle(title)
 
-    const { eventId } = useParams()
-    const [event, setEvent] = useState<EventResponse | null>(null)
-    const [error, setError] = useState<Error | null>(null)
-    const [isLoading, setIsLoading] = useState(false)
+    const { slug } = useParams()
+    const { getEvent } = useEventStore()
+    const { error, event, status } = getEvent(slug || '')
 
     useEffect(() => {
-        const fetchData = async () => {
-            setIsLoading(true)
-
-            try {
-                const { data } = await axios.get<EventResponse>(`/api/v1/events/${eventId}`)
-                setEvent(data)
-                setTitle(`${data.Name} | OutClimb`)
-            } catch (error) {
-                setError(error as Error)
-            }
-
-            setIsLoading(false)
+        if (status === 'success' && event) {
+            setTitle(`${event.Name} | OutClimb`)
         }
-
-        fetchData()
-    }, [eventId])
+    }, [event, status])
 
     return (
         <>
             <Header />
             <PageContent>
-                {isLoading && <p>Loading</p>}
-                {!isLoading && error === null && <h2>{event?.Name}</h2>}
-                {!isLoading && error !== null && <h2>{error.toString()}</h2>}
+                {status === 'loading' && <p>Loading</p>}
+                {status === 'error' && error != null && <h2>{error.toString()}</h2>}
+                {status === 'success' && event && <h2>{event?.Name}</h2>}
             </PageContent>
         </>
     )

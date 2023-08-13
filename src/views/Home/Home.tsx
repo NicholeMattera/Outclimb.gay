@@ -1,27 +1,32 @@
+import './Home.scss'
 import Blurb from 'components/Blurb/Blurb'
 import Header from 'components/Header/Header'
 import Hero from 'components/Hero/Hero'
 import PageContent from 'components/PageContent/PageContent'
 import useDocumentTitle from 'hooks/useDocumentTitle'
+import useEventStore from 'stores/useEventStore'
 import { BlurbType } from 'types/BlurbType'
-
-import './Home.scss'
 
 function Home() {
     useDocumentTitle('OutClimb')
+
+    const { getUpcomingEvent } = useEventStore()
+    const { event, status } = getUpcomingEvent()
 
     return (
         <>
             <Header />
             <PageContent>
                 <div className="home">
-                    <Hero
-                        description="Sunday August 13th • 9:15am"
-                        href="/events/20230813-outdoor-climbing-saint-croix-falls"
-                        image="/images/taylor_falls.webp"
-                        imageAlt=""
-                        title="Outdoor Climbing - Interstate State Park / Saint Croix Falls WI"
-                    />
+                    {status === 'success' && event != null && (
+                        <Hero
+                            description={`${event.StartDate} • ${event.StartTime}`}
+                            href={`/events/${event.Slug}`}
+                            image={event.Image}
+                            imageAlt={event.ImageAlt}
+                            title={event.Name}
+                        />
+                    )}
 
                     <Blurb image="/images/mbp.webp" imageAlt="" type={BlurbType.ImageLeft}>
                         <h2>About Us</h2>
