@@ -1,4 +1,4 @@
-export class DateUtil {
+export default class DateUtil {
     static getDayOfWeek(day: number): string {
         const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
         return days[day]
@@ -20,6 +20,14 @@ export class DateUtil {
         }
 
         return result
+    }
+
+    static getMinutes(minutes: number): string {
+        if (minutes < 10) {
+            return `0${minutes}`
+        }
+
+        return minutes.toString()
     }
 
     static getMonth(month: number): string {
@@ -70,7 +78,7 @@ export class DateUtil {
 
     static formatLongTime(date: Date): string {
         const { hour, period } = this.get12Hour(date.getHours())
-        const minute = date.getMinutes()
+        const minute = this.getMinutes(date.getMinutes())
 
         return `${hour}:${minute}${period}`
     }

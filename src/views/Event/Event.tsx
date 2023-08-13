@@ -5,6 +5,7 @@ import Hero from 'components/Hero/Hero'
 import PageContent from 'components/PageContent/PageContent'
 import useDocumentTitle from 'hooks/useDocumentTitle'
 import useEventStore from 'stores/useEventStore'
+import useLongEventDate from 'hooks/useLongEventDate'
 import { useParams } from 'react-router-dom'
 
 function Event() {
@@ -21,6 +22,8 @@ function Event() {
         }
     }, [event, status])
 
+    const eventDescription = useLongEventDate(event, status)
+
     return (
         <>
             <Header />
@@ -29,7 +32,12 @@ function Event() {
                 {status === 'error' && error != null && <h2>{error.toString()}</h2>}
                 {status === 'success' && event && (
                     <>
-                        <Hero image={event.image} imageAlt={event.imageAlt} title={event.name} />
+                        <Hero
+                            description={eventDescription}
+                            image={event.image}
+                            imageAlt={event.imageAlt}
+                            title={event.name}
+                        />
 
                         <div dangerouslySetInnerHTML={{ __html: event.body }}></div>
                     </>

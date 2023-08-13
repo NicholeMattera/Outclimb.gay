@@ -43,7 +43,7 @@ function useEventStore() {
     }
 
     const GetUpcomingEvent = function () {
-        const [event, setEvent] = useState<EventResponse | null>(null)
+        const [event, setEvent] = useState<EventResponse | undefined>(undefined)
         const { data, error, status } = FetchEvents()
 
         useEffect(() => {
