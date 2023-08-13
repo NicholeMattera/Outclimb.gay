@@ -11,7 +11,11 @@ function NotFound() {
         <>
             <Header />
             <PageContent>
-                <Hero image="images/mbp.webp" imageAlt="" title="Page Not Found" />
+                <Hero
+                    image="images/charles.webp"
+                    imageAlt="Charles the crag toad at Interstate State Park"
+                    title="Page Not Found"
+                />
             </PageContent>
         </>
     )

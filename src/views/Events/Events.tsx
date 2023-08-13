@@ -16,7 +16,11 @@ function Events() {
         <>
             <Header />
             <PageContent>
-                <Hero image="images/mbp.webp" imageAlt="" title="Upcoming Events" />
+                <Hero
+                    image="images/events.webp"
+                    imageAlt="Photo from a meetup on July 20th 2023 at Bouldering Project in Minneapolis"
+                    title="Upcoming Events"
+                />
 
                 {status === 'loading' && <p>Loading</p>}
                 {status === 'error' && error != null && <h2>{error.toString()}</h2>}

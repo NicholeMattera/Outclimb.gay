@@ -11,7 +11,11 @@ function Contact() {
         <>
             <Header />
             <PageContent>
-                <Hero image="images/mbp.webp" imageAlt="" title="Contact Us" />
+                <Hero
+                    image="images/contact.webp"
+                    imageAlt="Photo of Matt, Randi, Nickel, and Dustin on top of Sugar Loaf Bluff"
+                    title="Contact Us"
+                />
             </PageContent>
         </>
     )
