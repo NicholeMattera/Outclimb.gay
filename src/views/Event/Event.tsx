@@ -17,7 +17,7 @@ function Event() {
 
     useEffect(() => {
         if (status === 'success' && event) {
-            setTitle(`${event.Name} | OutClimb`)
+            setTitle(`${event.name} | OutClimb`)
         }
     }, [event, status])
 
@@ -29,9 +29,9 @@ function Event() {
                 {status === 'error' && error != null && <h2>{error.toString()}</h2>}
                 {status === 'success' && event && (
                     <>
-                        <Hero image={event.Image} imageAlt={event.ImageAlt} title={event.Name} />
+                        <Hero image={event.image} imageAlt={event.imageAlt} title={event.name} />
 
-                        <div dangerouslySetInnerHTML={{ __html: event.Body }}></div>
+                        <div dangerouslySetInnerHTML={{ __html: event.body }}></div>
                     </>
                 )}
             </PageContent>

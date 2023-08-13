@@ -1,6 +1,6 @@
 type LinkResponse = {
-    Name: string
-    URL: string
+    name: string
+    url: string
 }
 
 export default LinkResponse

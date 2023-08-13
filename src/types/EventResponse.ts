@@ -1,16 +1,14 @@
 import LinkResponse from './LinkResponse'
 
 type EventResponse = {
-    Body: string
-    EndDate: string
-    EndTime: string
-    Image: string
-    ImageAlt: string
-    Links: LinkResponse[]
-    Name: string
-    Slug: string
-    StartDate: string
-    StartTime: string
+    body: string
+    endTime: number
+    image: string
+    imageAlt: string
+    links: LinkResponse[]
+    name: string
+    slug: string
+    startTime: number
 }
 
 export default EventResponse

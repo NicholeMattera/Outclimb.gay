@@ -5,9 +5,6 @@ import (
 	"time"
 )
 
-const eventDateFormat = "Monday January 2"
-const eventTimeFormat = "3:04pm"
-
 const (
 	RegularMeetup   string = "regular-meetup"
 	OutdoorClimbing string = "outdoor-climbing"
@@ -15,16 +12,14 @@ const (
 )
 
 type EventPublic struct {
-	Body      string
-	EndDate   string
-	EndTime   string
-	Image     string
-	ImageAlt  string
-	Links     []LinkPublic
-	Name      string
-	Slug      string
-	StartDate string
-	StartTime string
+	Body      string       `json:"body"`
+	EndTime   int64        `json:"endTime"`
+	Image     string       `json:"image"`
+	ImageAlt  string       `json:"imageAlt"`
+	Links     []LinkPublic `json:"links"`
+	Name      string       `json:"name"`
+	Slug      string       `json:"slug"`
+	StartTime int64        `json:"startTime"`
 }
 
 type Event struct {
@@ -40,35 +35,11 @@ type Event struct {
 	Slug      string
 }
 
-// Source: https://stackoverflow.com/questions/13627308/add-st-nd-rd-and-th-ordinal-suffix-to-a-number
-func getDayOrdinalSuffix(time time.Time) string {
-	day := time.Local().Day()
-
-	j := day % 10
-	k := day % 100
-
-	if j == 1 && k != 11 {
-		return "st"
-	}
-
-	if j == 2 && k != 12 {
-		return "nd"
-	}
-
-	if j == 3 && k != 13 {
-		return "rd"
-	}
-
-	return "th"
-}
-
 func (e *Event) Public() EventPublic {
-	endDate := ""
-	endTime := ""
+	var endTime int64;
 
 	if e.DateEnd.Valid {
-		endDate = e.DateEnd.Time.Local().Format(eventDateFormat) + getDayOrdinalSuffix(e.DateEnd.Time)
-		endTime = e.DateEnd.Time.Local().Format(eventTimeFormat)
+		endTime = e.DateEnd.Time.UnixMilli()
 	}
 
 	links := make([]LinkPublic, len(e.Links))
@@ -78,15 +49,13 @@ func (e *Event) Public() EventPublic {
 
 	return EventPublic{
 		Body:      e.Body,
-		EndDate:   endDate,
 		EndTime:   endTime,
 		Image:     e.Image,
 		ImageAlt:  e.ImageAlt,
 		Links:     links,
 		Name:      e.Name,
 		Slug:      e.Slug,
-		StartDate: e.DateStart.Local().Format(eventDateFormat) + getDayOrdinalSuffix(e.DateStart),
-		StartTime: e.DateStart.Local().Format(eventTimeFormat),
+		StartTime: e.DateStart.UnixMilli(),
 	}
 }
 
@@ -195,16 +164,4 @@ func GetNextEvent(db *sql.DB, category string) (event Event, err error) {
 	}
 
 	return event, nil
-}
-
-func GetRedirectSlug(slug string) (string, bool) {
-	if slug == "20230527-outdoor-climbing-taylor-falls" {
-		return "20230527-outdoor-climbing-saint-croix-falls", true
-	}
-
-	if slug == "20230716-outdoor-climbing-sugar-loaf-bluff" {
-		return "20230716-outdoor-skills-sharing-sugar-loaf-bluff", true
-	}
-
-	return "", false
 }

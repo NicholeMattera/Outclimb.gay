@@ -27,9 +27,9 @@ function Events() {
                 {status === 'success' &&
                     events &&
                     events.map((event) => (
-                        <div key={event.Slug}>
+                        <div key={event.slug}>
                             <h2>
-                                <Link to={`/events/${event.Slug}`}>{event.Name}</Link>
+                                <Link to={`/events/${event.slug}`}>{event.name}</Link>
                             </h2>
                         </div>
                     ))}
