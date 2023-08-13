@@ -1,7 +1,6 @@
-import { useMemo } from 'react'
-import { BlurbType } from 'types/BlurbType'
-
 import './Blurb.scss'
+import { BlurbType } from 'types/BlurbType'
+import { useMemo } from 'react'
 
 type BlurbProps = {
     children?: React.ReactNode

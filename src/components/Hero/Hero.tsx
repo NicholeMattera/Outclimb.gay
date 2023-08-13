@@ -1,7 +1,6 @@
-import { useMemo } from 'react'
-import { Link } from 'react-router-dom'
-
 import './Hero.scss'
+import { Link } from 'react-router-dom'
+import { useMemo } from 'react'
 
 type HeroProps = {
     description?: string

@@ -1,15 +1,15 @@
 import './Events.scss'
 import Header from 'components/Header/Header'
+import { Link } from 'react-router-dom'
 import PageContent from 'components/PageContent/PageContent'
 import useDocumentTitle from 'hooks/useDocumentTitle'
 import useEventStore from 'stores/useEventStore'
-import { Link } from 'react-router-dom'
 
 function Events() {
     useDocumentTitle('Events | OutClimb')
 
-    const { getEvents } = useEventStore()
-    const { error, events, status } = getEvents()
+    const { GetEvents } = useEventStore()
+    const { error, events, status } = GetEvents()
 
     return (
         <>

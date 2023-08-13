@@ -1,8 +1,7 @@
+import './NotFound.scss'
 import Header from 'components/Header/Header'
 import PageContent from 'components/PageContent/PageContent'
 import useDocumentTitle from 'hooks/useDocumentTitle'
-
-import './NotFound.scss'
 
 function NotFound() {
     useDocumentTitle('Not Found | OutClimb')

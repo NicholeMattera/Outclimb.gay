@@ -1,17 +1,17 @@
 import './Home.scss'
 import Blurb from 'components/Blurb/Blurb'
+import { BlurbType } from 'types/BlurbType'
 import Header from 'components/Header/Header'
 import Hero from 'components/Hero/Hero'
 import PageContent from 'components/PageContent/PageContent'
 import useDocumentTitle from 'hooks/useDocumentTitle'
 import useEventStore from 'stores/useEventStore'
-import { BlurbType } from 'types/BlurbType'
 
 function Home() {
     useDocumentTitle('OutClimb')
 
-    const { getUpcomingEvent } = useEventStore()
-    const { event, status } = getUpcomingEvent()
+    const { GetUpcomingEvent } = useEventStore()
+    const { event, status } = GetUpcomingEvent()
 
     return (
         <>

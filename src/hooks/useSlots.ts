@@ -1,5 +1,5 @@
-import Slot from 'components/Slot/Slot'
 import React from 'react'
+import Slot from 'components/Slot/Slot'
 import SlotProps from 'types/SlotProps'
 
 function useSlots(children: React.ReactNode): Record<string, Array<React.ReactNode>> {

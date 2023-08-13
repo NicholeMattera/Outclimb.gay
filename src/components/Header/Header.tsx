@@ -1,10 +1,9 @@
+import './Header.scss'
+import { useEffect, useState } from 'react'
 import classNames from 'classnames'
+import { Link } from 'react-router-dom'
 import useDarkMode from 'hooks/useDarkMode'
 import useWindowScroll from 'hooks/useWindowScroll'
-import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
-
-import './Header.scss'
 
 function Header() {
     const darkMode = useDarkMode()

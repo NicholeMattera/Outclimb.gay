@@ -1,9 +1,9 @@
 import './Event.scss'
+import { useEffect, useState } from 'react'
 import Header from 'components/Header/Header'
 import PageContent from 'components/PageContent/PageContent'
 import useDocumentTitle from 'hooks/useDocumentTitle'
 import useEventStore from 'stores/useEventStore'
-import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 
 function Event() {
@@ -11,8 +11,8 @@ function Event() {
     useDocumentTitle(title)
 
     const { slug } = useParams()
-    const { getEvent } = useEventStore()
-    const { error, event, status } = getEvent(slug || '')
+    const { GetEvent } = useEventStore()
+    const { error, event, status } = GetEvent(slug || '')
 
     useEffect(() => {
         if (status === 'success' && event) {

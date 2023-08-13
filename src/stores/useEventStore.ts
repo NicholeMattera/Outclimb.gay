@@ -1,6 +1,6 @@
+import { useEffect, useState } from 'react'
 import axios from 'axios'
 import EventResponse from 'types/EventResponse'
-import { useEffect, useState } from 'react'
 import { useQuery } from '@tanstack/react-query'
 
 async function loadEvent(slug: string) {
