@@ -36,6 +36,15 @@ function Hero(props: HeroProps) {
                     </h2>
                 </Link>
             )
+        } else if (title || description) {
+            return (
+                <div className="hero__content">
+                    <h2>
+                        {props.title}
+                        {props.description}
+                    </h2>
+                </div>
+            )
         }
 
         return

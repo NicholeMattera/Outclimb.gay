@@ -1,6 +1,7 @@
 import './Event.scss'
 import { useEffect, useState } from 'react'
 import Header from 'components/Header/Header'
+import Hero from 'components/Hero/Hero'
 import PageContent from 'components/PageContent/PageContent'
 import useDocumentTitle from 'hooks/useDocumentTitle'
 import useEventStore from 'stores/useEventStore'
@@ -26,7 +27,13 @@ function Event() {
             <PageContent>
                 {status === 'loading' && <p>Loading</p>}
                 {status === 'error' && error != null && <h2>{error.toString()}</h2>}
-                {status === 'success' && event && <h2>{event?.Name}</h2>}
+                {status === 'success' && event && (
+                    <>
+                        <Hero image={event.Image} imageAlt={event.ImageAlt} title={event.Name} />
+
+                        <div dangerouslySetInnerHTML={{ __html: event.Body }}></div>
+                    </>
+                )}
             </PageContent>
         </>
     )

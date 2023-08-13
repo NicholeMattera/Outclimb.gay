@@ -1,5 +1,6 @@
 import './Events.scss'
 import Header from 'components/Header/Header'
+import Hero from 'components/Hero/Hero'
 import { Link } from 'react-router-dom'
 import PageContent from 'components/PageContent/PageContent'
 import useDocumentTitle from 'hooks/useDocumentTitle'
@@ -15,6 +16,8 @@ function Events() {
         <>
             <Header />
             <PageContent>
+                <Hero image="images/mbp.webp" imageAlt="" title="Upcoming Events" />
+
                 {status === 'loading' && <p>Loading</p>}
                 {status === 'error' && error != null && <h2>{error.toString()}</h2>}
                 {status === 'success' &&

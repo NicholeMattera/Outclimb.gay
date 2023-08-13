@@ -1,5 +1,6 @@
 import './Contact.scss'
 import Header from 'components/Header/Header'
+import Hero from 'components/Hero/Hero'
 import PageContent from 'components/PageContent/PageContent'
 import useDocumentTitle from 'hooks/useDocumentTitle'
 
@@ -9,7 +10,9 @@ function Contact() {
     return (
         <>
             <Header />
-            <PageContent></PageContent>
+            <PageContent>
+                <Hero image="images/mbp.webp" imageAlt="" title="Contact Us" />
+            </PageContent>
         </>
     )
 }
