@@ -16,12 +16,14 @@ function Blurb(props: BlurbProps) {
         }
     }, [props.image])
 
-    return (
-        <div className="blurb">
-            <div aria-label={props.imageAlt} className="blurb__image" role="img" style={imageStyles} />
-            <div className="blurb__content">{props.children}</div>
-        </div>
-    )
+    const renderContent = () => {
+        const image = <div aria-label={props.imageAlt} className="blurb__image" role="img" style={imageStyles} />
+        const content = <div className="blurb__content">{props.children}</div>
+
+        return props.type === BlurbType.ImageLeft ? [image, content] : [content, image]
+    }
+
+    return <div className="blurb">{renderContent()}</div>
 }
 
 export default Blurb
