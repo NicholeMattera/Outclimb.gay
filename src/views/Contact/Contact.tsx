@@ -24,6 +24,18 @@ function Contact() {
                     <p>
                         <strong>Email</strong>: <a href="mailto:info@outclimb.gay">info@outclimb.gay</a>
                     </p>
+                    <p>
+                        <strong>Facebook</strong>:{' '}
+                        <a href="https://www.facebook.com/groups/1070762049768453" rel="noreferrer" target="blank">
+                            OutClimb MN
+                        </a>
+                    </p>
+                    <p>
+                        <strong>Instagram</strong>:{' '}
+                        <a href="https://www.instagram.com/outclimbmn" rel="noreferrer" target="blank">
+                            @outclimbmn
+                        </a>
+                    </p>
                 </div>
             </PageContent>
         </>
