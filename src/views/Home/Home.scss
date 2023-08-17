@@ -2,4 +2,23 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
+
+    &__headline {
+        font-size: 40px;
+        padding: 32px 64px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .home__headline {
+        padding: 32px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .home__headline {
+        padding: 8px;
+        font-size: 28px;
+    }
 }

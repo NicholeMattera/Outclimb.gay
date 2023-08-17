@@ -31,14 +31,35 @@ function Home() {
                         />
                     )}
 
-                    <Blurb image="/assets/images/mbp.webp" imageAlt="" type={BlurbType.ImageLeft}>
-                        <h2>About Us</h2>
+                    <h2 className="home__headline">
+                        OutClimb is a minneapolis-based organization dedicated to making climbing accessible to as many
+                        trans and queer people as possible.
+                    </h2>
+
+                    <Blurb
+                        height="240px"
+                        image="/assets/images/home1.webp"
+                        imageAlt="Photo from a skill share event at Sugar Loaf Bluff on July 26th 2023"
+                        type={BlurbType.ImageLeft}
+                    >
+                        <h2>We offer free...</h2>
+                        <ul>
+                            <li>Outdoor meet-ups</li>
+                            <li>Outdoor skill shares</li>
+                            <li>Bouldering meet-ups every first and third Thursday of the month</li>
+                        </ul>
+                    </Blurb>
+
+                    <Blurb
+                        height="240px"
+                        image="/assets/images/home2.webp"
+                        imageAlt="Group photo from an outdoor meet-up at Interstate State Park on March 27th 2023"
+                        type={BlurbType.ImageRight}
+                    >
                         <p>
-                            OutClimb is a minneapolis-based organization dedicated to making climbing accessible to as
-                            many trans and queer people as possible. We offer free outdoor meet-ups, bi-weekly climbing
-                            meet-ups, and work with Minneapolis Bouldering Project for cost-accessible indoor climbing.
-                            We are a space that strives to be inclusive to all through communal check ins, group
-                            activities, pronouns and names, encouragement, and friendship.
+                            We work with Bouldering Project Minneapolis for cost-accessible indoor climbing. We also
+                            provide a space that strives to be inclusive through communal check-ins, group activities,
+                            sharing of names &amp; pronouns, encouragement, and friendship.
                         </p>
                     </Blurb>
                 </div>

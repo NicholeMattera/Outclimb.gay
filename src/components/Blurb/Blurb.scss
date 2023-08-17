@@ -1,12 +1,17 @@
 .blurb {
-    align-items: stretch;
+    align-items: center;
     display: flex;
+
+    &--image-right {
+        flex-direction: row-reverse;
+    }
 
     &__image {
         background-position: center center;
         background-size: cover;
         border-radius: 8px;
         flex: 0 0 40%;
+        height: 100%;
     }
 
     &__content {
@@ -18,6 +23,7 @@
 @media screen and (max-width: 767px) {
     .blurb {
         display: block;
+        height: auto !important;
 
         &__image {
             flex: none;
