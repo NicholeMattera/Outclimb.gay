@@ -57,11 +57,11 @@
         li {
             margin: 0;
             padding: 0;
-        }
-    }
 
-    &__donate-button {
-        padding: 10px 16px;
+            &.header__donate-button {
+                padding: 10px 16px;
+            }
+        }
     }
 
     &__facebook:hover,
