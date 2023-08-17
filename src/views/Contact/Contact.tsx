@@ -16,6 +16,15 @@ function Contact() {
                     imageAlt="Photo of Matt, Randi, Nickel, and Dustin on top of Sugar Loaf Bluff"
                     title="Contact Us"
                 />
+
+                <div className="contact">
+                    <p>
+                        <strong>Phone</strong>: (612) 440-9209
+                    </p>
+                    <p>
+                        <strong>Email</strong>: <a href="mailto:info@outclimb.gay">info@outclimb.gay</a>
+                    </p>
+                </div>
             </PageContent>
         </>
     )
