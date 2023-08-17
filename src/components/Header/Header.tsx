@@ -13,9 +13,11 @@ function Header() {
         'header--shadow': windowScrollPosition[1] > 0,
     })
 
-    const [headerImage, setHeaderImage] = useState(darkMode ? '/images/logo_dark.webp' : '/images/logo_light.webp')
+    const [headerImage, setHeaderImage] = useState(
+        darkMode ? '/assets/images/logo_dark.webp' : '/assets/images/logo_light.webp',
+    )
     useEffect(() => {
-        setHeaderImage(darkMode ? '/images/logo_dark.webp' : '/images/logo_light.webp')
+        setHeaderImage(darkMode ? '/assets/images/logo_dark.webp' : '/assets/images/logo_light.webp')
     }, [darkMode])
 
     return (

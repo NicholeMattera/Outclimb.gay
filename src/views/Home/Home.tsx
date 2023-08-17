@@ -31,7 +31,7 @@ function Home() {
                         />
                     )}
 
-                    <Blurb image="/images/mbp.webp" imageAlt="" type={BlurbType.ImageLeft}>
+                    <Blurb image="/assets/images/mbp.webp" imageAlt="" type={BlurbType.ImageLeft}>
                         <h2>About Us</h2>
                         <p>
                             OutClimb is a minneapolis-based organization dedicated to making climbing accessible to as

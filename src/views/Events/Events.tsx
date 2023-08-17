@@ -17,7 +17,7 @@ function Events() {
             <Header />
             <PageContent>
                 <Hero
-                    image="images/events.webp"
+                    image="/assets/images/events.webp"
                     imageAlt="Photo from a meetup on July 20th 2023 at Bouldering Project in Minneapolis"
                     title="Upcoming Events"
                 />
