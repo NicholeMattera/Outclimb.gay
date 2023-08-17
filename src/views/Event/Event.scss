@@ -1,0 +1,18 @@
+.event {
+    &__body {
+        margin: 48px 8px 32px;
+
+        h2 {
+            margin: 16px 0 8px;
+        }
+
+        p {
+            margin: 8px 0;
+        }
+    }
+
+    &__links {
+        display: flex;
+        gap: 16px;
+    }
+}

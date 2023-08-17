@@ -1,5 +1,6 @@
 import './Event.scss'
 import { useEffect, useState } from 'react'
+import Button from 'components/Button/Button'
 import Header from 'components/Header/Header'
 import Hero from 'components/Hero/Hero'
 import PageContent from 'components/PageContent/PageContent'
@@ -39,7 +40,13 @@ function Event() {
                             title={event.name}
                         />
 
-                        <div dangerouslySetInnerHTML={{ __html: event.body }}></div>
+                        <div className="event__body" dangerouslySetInnerHTML={{ __html: event.body }}></div>
+
+                        <div className="event__links">
+                            {event.links.map((link) => (
+                                <Button key={link.name} label={link.name} href={link.url} target="_blank" />
+                            ))}
+                        </div>
                     </>
                 )}
             </PageContent>
