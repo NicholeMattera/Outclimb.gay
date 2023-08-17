@@ -17,6 +17,9 @@ func SetupRouter() *gin.Engine {
 		c.File("./dist/index.html")
     })
 
+	// Redirect Routes
+	NewRedirectHandler(router)
+
 	// API v1
 	apiV1RouterGroup := router.Group("/api/v1")
 	NewPingHandler(apiV1RouterGroup)

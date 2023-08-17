@@ -57,16 +57,14 @@ func GetLinks(db *sql.DB, event *Event) (links []Link, err error) {
 func GetNextRegisterLink(db *sql.DB) (link Link, err error) {
 	query := `
 		SELECT
-			name,
-			url
+			links.name,
+			links.url
 		FROM links
+		LEFT JOIN events ON links.event_id = events.id
 		WHERE
-		name = "Register" AND
-		(
-			show_on IS NULL OR
-			show_on < NOW()
-		)
-		ORDER BY show_on DESC
+			links.name = "Register" AND
+			events.dateStart > NOW()
+		ORDER BY show_on ASC
 		LIMIT 1
 	`
 
