@@ -18,6 +18,7 @@
     }
 
     a {
+        color: $light_theme_color;
         display: block;
     }
 
@@ -25,6 +26,10 @@
         outline-color: $deep_purple_200;
         outline-style: solid;
         outline-width: 2px;
+
+        &:not(:focus-visible) {
+            outline: 0 !important;
+        }
     }
 
     &__logo,
@@ -86,5 +91,9 @@
 @media (prefers-color-scheme: dark) {
     .header {
         background: $dark_theme_background;
+
+        a {
+            color: $dark_theme_color;
+        }
     }
 }

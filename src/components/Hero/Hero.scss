@@ -15,10 +15,17 @@
         width: 100%;
     }
 
+    a.hero__content {
+        &:hover h2 {
+            text-decoration: underline;
+        }
+    }
+
     &__content {
         background: $light_theme_background;
         border-radius: 0px 16px 0px 0px;
         bottom: 0;
+        color: $light_theme_color;
         left: 0;
         padding: 8px 24px 8px 8px;
         position: absolute;
@@ -33,6 +40,10 @@
             outline-style: solid;
             outline-width: 2px;
             text-decoration: none;
+
+            &:not(:focus-visible) {
+                outline: 0 !important;
+            }
         }
 
         h2 {
@@ -76,5 +87,6 @@
 @media (prefers-color-scheme: dark) {
     .hero__content {
         background: $dark_theme_background;
+        color: $dark_theme_color;
     }
 }

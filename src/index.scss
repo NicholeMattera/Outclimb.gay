@@ -26,12 +26,13 @@ body {
 }
 
 a {
-    color: $light_theme_color;
+    color: $deep_purple_400;
     text-decoration: none;
 
     &:hover,
     &:focus {
         text-decoration: underline;
+        outline-color: $deep_purple_200;
     }
 }
 
@@ -43,6 +44,6 @@ a {
     }
 
     a {
-        color: $dark_theme_color;
+        color: $deep_purple_100;
     }
 }
