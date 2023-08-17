@@ -1,5 +1,7 @@
 import './Header.scss'
 import { useEffect, useState } from 'react'
+import Button from 'components/Button/Button'
+import { ButtonType } from 'types/ButtonType'
 import classNames from 'classnames'
 import { Link } from 'react-router-dom'
 import useDarkMode from 'hooks/useDarkMode'
@@ -30,17 +32,29 @@ function Header() {
             <nav className="header__navigation">
                 <ul>
                     <li>
-                        <Link to="/events">Events</Link>
+                        <Link to="/events" className="header__nav-item">
+                            Events
+                        </Link>
                     </li>
                     <li>
-                        <Link to="/contact">Contact</Link>
+                        <Link to="/contact" className="header__nav-item">
+                            Contact
+                        </Link>
                     </li>
                 </ul>
             </nav>
             <ul className="header__social-links">
+                <li className="header__donate-button">
+                    <Button
+                        href="https://gofund.me/ca5465d4"
+                        label="Donate"
+                        target="_blank"
+                        type={ButtonType.Primary}
+                    />
+                </li>
                 <li>
                     <a
-                        className="header__facebook"
+                        className="header__nav-item header__facebook"
                         href="https://www.facebook.com/groups/1070762049768453"
                         target="_blank"
                         rel="noreferrer"
@@ -51,7 +65,7 @@ function Header() {
                 </li>
                 <li>
                     <a
-                        className="header__instagram"
+                        className="header__nav-item header__instagram"
                         href="https://www.instagram.com/outclimbmn"
                         target="_blank"
                         rel="noreferrer"
@@ -61,7 +75,12 @@ function Header() {
                     </a>
                 </li>
                 <li>
-                    <a className="header__discord" href="https://discord.outclimb.gay" target="_blank" rel="noreferrer">
+                    <a
+                        className="header__nav-item header__discord"
+                        href="https://discord.outclimb.gay"
+                        target="_blank"
+                        rel="noreferrer"
+                    >
                         <i aria-hidden="true" className="fa-brands fa-discord"></i>
                         <span className="fa-sr-only">Discord Server</span>
                     </a>

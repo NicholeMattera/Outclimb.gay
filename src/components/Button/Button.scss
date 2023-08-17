@@ -1,0 +1,23 @@
+@import 'styles/colors.scss';
+
+a.button {
+    border-radius: 8px;
+    display: inline-block;
+    font-weight: bold;
+    height: auto;
+    line-height: normal;
+    padding: 12px 32px;
+    text-align: center;
+
+    &--primary {
+        background: $deep_purple_200;
+        color: $white;
+    }
+
+    &:focus {
+        outline-color: $deep_purple_200;
+        outline-offset: 2px;
+        outline-style: solid;
+        outline-width: 2px;
+    }
+}
