@@ -25,6 +25,10 @@ body {
     min-height: 100dvh;
 }
 
+body.no-scroll {
+    overflow: hidden;
+}
+
 a {
     color: $deep_purple_400;
     text-decoration: none;
