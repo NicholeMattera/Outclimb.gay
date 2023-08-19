@@ -68,6 +68,17 @@ export default class DateUtil {
         return 'th'
     }
 
+    static getShortDayOfWeek(day: number): string {
+        const days = ['Sun', 'Mon', 'Tues', 'Wed', 'Thurs', 'Fri', 'Sat']
+        return days[day]
+    }
+
+    static getShortMonth(month: number): string {
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec']
+
+        return months[month]
+    }
+
     static formatLongDate(date: Date): string {
         const day = this.getDayOfWeek(date.getDay())
         const month = this.getMonth(date.getMonth())
@@ -81,5 +92,13 @@ export default class DateUtil {
         const minute = this.getMinutes(date.getMinutes())
 
         return `${hour}:${minute}${period}`
+    }
+
+    static formatShortDate(date: Date): string {
+        const day = this.getShortDayOfWeek(date.getDay())
+        const month = this.getShortMonth(date.getMonth())
+        const dateOrdinalSuffix = this.getOrdinalSuffix(date.getDate())
+
+        return `${day} ${month} ${date.getDate()}${dateOrdinalSuffix}`
     }
 }

@@ -1,0 +1,37 @@
+@import 'styles/colors.scss';
+
+.card {
+    border-radius: 8px;
+    color: $light_theme_color;
+    position: relative;
+
+    &:focus {
+        outline-color: $deep_purple_200;
+        outline-style: solid;
+        outline-width: 2px;
+
+        &:not(:focus-visible) {
+            outline: 0 !important;
+            text-decoration: none;
+        }
+    }
+
+    &__image {
+        border-radius: 8px;
+        width: 100%;
+    }
+
+    &__title {
+        margin: 8px;
+    }
+
+    &__description {
+        margin: 8px;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .card {
+        color: $dark_theme_color;
+    }
+}

@@ -1,0 +1,18 @@
+.events {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin: 48px 8px 32px;
+}
+
+@media screen and (max-width: 991px) {
+    .events {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .events {
+        grid-template-columns: 1fr;
+    }
+}
