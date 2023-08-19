@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react'
 import axios from 'axios'
 import EventResponse from 'types/EventResponse'
+import { useMemo } from 'react'
 import { useQuery } from '@tanstack/react-query'
 
 async function loadEvent(slug: string) {
@@ -43,12 +43,16 @@ function useEventStore() {
     }
 
     const GetUpcomingEvent = function () {
-        const [event, setEvent] = useState<EventResponse | undefined>(undefined)
         const { data, error, status } = FetchEvents()
 
-        useEffect(() => {
+        const event = useMemo(() => {
             if (status === 'success') {
-                setEvent(data[0])
+                const now = new Date().getTime()
+                return (
+                    data.find((event: EventResponse) => {
+                        return event.startTime > now
+                    }) || data[data.length - 1]
+                )
             }
         }, [data, status])
 
