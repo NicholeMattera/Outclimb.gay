@@ -9,8 +9,8 @@ import useEventStore from 'stores/useEventStore'
 function Events() {
     useDocumentTitle('Events | OutClimb')
 
-    const { GetEvents } = useEventStore()
-    const { error, events, status } = GetEvents()
+    const { GetUpcomingEvents } = useEventStore()
+    const { error, events, status } = GetUpcomingEvents()
 
     return (
         <>

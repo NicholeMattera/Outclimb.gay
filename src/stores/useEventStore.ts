@@ -63,10 +63,32 @@ function useEventStore() {
         }
     }
 
+    const GetUpcomingEvents = function () {
+        const { data, error, status } = FetchEvents()
+
+        const events = useMemo(() => {
+            if (status === 'success') {
+                const now = new Date().getTime()
+                return (
+                    data.filter((event: EventResponse) => {
+                        return event.startTime > now
+                    }) || data[data.length - 1]
+                )
+            }
+        }, [data, status])
+
+        return {
+            error,
+            events,
+            status,
+        }
+    }
+
     return {
         GetEvent,
         GetEvents,
         GetUpcomingEvent,
+        GetUpcomingEvents,
     }
 }
 
