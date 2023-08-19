@@ -1,5 +1,10 @@
 @import 'styles/colors.scss';
 
+$button-focus-outline: $deep_purple_700;
+$button-primary-background: $deep_purple_200;
+$button-primary-color: $white;
+$button-primary-disabled-background: $deep_purple_800;
+
 a.button {
     border-radius: 8px;
     display: inline-block;
@@ -10,12 +15,17 @@ a.button {
     text-align: center;
 
     &--primary {
-        background: $deep_purple_200;
-        color: $white;
+        background: $button-primary-background;
+        color: $button-primary-color;
+    }
+
+    &--disabled {
+        background: $button-primary-disabled-background;
+        pointer-events: none;
     }
 
     &:focus {
-        outline-color: $deep_purple_200;
+        outline-color: $button-focus-outline;
         outline-offset: 2px;
         outline-style: solid;
         outline-width: 2px;

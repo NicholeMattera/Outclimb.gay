@@ -2,22 +2,33 @@ package model
 
 import (
 	"database/sql"
+	"time"
 )
 
 type LinkPublic struct {
-	Name string `json:"name"`
-	URL  string `json:"url"`
+	Disabled bool   `json:"disabled"`
+	Name     string `json:"name"`
+	ShowOn   int64  `json:"showOn"`
+	URL      string `json:"url"`
 }
 
 type Link struct {
-	Name string
-	URL  string
+	Name   string
+	ShowOn sql.NullTime
+	URL    string
 }
 
 func (l *Link) Public() LinkPublic {
+	ShowOn := int64(0)
+	if l.ShowOn.Valid  {
+		ShowOn = l.ShowOn.Time.UnixMilli()
+	}
+
 	return LinkPublic{
-		Name: l.Name,
-		URL:  l.URL,
+		Disabled: l.ShowOn.Valid && time.Now().Before(l.ShowOn.Time),
+		Name:     l.Name,
+		ShowOn:   ShowOn,
+		URL:      l.URL,
 	}
 }
 
@@ -25,14 +36,11 @@ func GetLinks(db *sql.DB, event *Event) (links []Link, err error) {
 	query := `
 		SELECT
 			name,
+			show_on,
 			url
 		FROM links
 		WHERE
-			event_id = ? AND
-			(
-				show_on IS NULL OR
-				show_on < NOW()
-			)
+			event_id = ?
 		ORDER BY position
 	`
 	rows, err := db.Query(query, event.Id)
@@ -43,7 +51,7 @@ func GetLinks(db *sql.DB, event *Event) (links []Link, err error) {
 
 	for rows.Next() {
 		var link Link
-		err = rows.Scan(&link.Name, &link.URL)
+		err = rows.Scan(&link.Name, &link.ShowOn, &link.URL)
 		if err != nil {
 			links = []Link{}
 			return

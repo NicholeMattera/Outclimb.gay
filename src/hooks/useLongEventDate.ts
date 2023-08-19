@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react'
 import DateUtil from 'utils/date.utils'
 import EventResponse from 'types/EventResponse'
+import { useMemo } from 'react'
 
 function useLongEventDate(event: EventResponse | undefined, status: string) {
-    const [longEventDate, setLongEventDate] = useState('')
-    useEffect(() => {
+    return useMemo(() => {
         if (status === 'success' && event) {
             const startDate = new Date(event.startTime)
             const formattedStartDate = DateUtil.formatLongDate(startDate)
@@ -16,17 +15,17 @@ function useLongEventDate(event: EventResponse | undefined, status: string) {
                 const formattedEndTime = DateUtil.formatLongTime(endDate)
 
                 if (formattedStartDate === formattedEndDate) {
-                    setLongEventDate(`${formattedStart} - ${formattedEndTime}`)
+                    return `${formattedStart} - ${formattedEndTime}`
                 } else {
-                    setLongEventDate(`${formattedStart} - ${formattedEndDate} • ${formattedEndTime}`)
+                    return `${formattedStart} - ${formattedEndDate} • ${formattedEndTime}`
                 }
             } else {
-                setLongEventDate(formattedStart)
+                return formattedStart
             }
         }
-    }, [event, status])
 
-    return longEventDate
+        return ''
+    }, [event, status])
 }
 
 export default useLongEventDate

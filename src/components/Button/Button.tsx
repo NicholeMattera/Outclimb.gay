@@ -1,6 +1,7 @@
 import './Button.scss'
 import { ButtonType } from 'types/ButtonType'
 import classNames from 'classnames'
+import { useMemo } from 'react'
 import useSlots from 'hooks/useSlots'
 
 type ButtonProps = {
@@ -22,8 +23,18 @@ function Button(props: ButtonProps) {
         'button--secondary': props.type == ButtonType.Secondary,
     })
 
+    const tabIndex = useMemo(() => {
+        return props.disabled ? -1 : 0
+    }, [props.disabled])
+
     return (
-        <a aria-disabled={props.disabled} className={buttonClass} href={props.href} target={props.target}>
+        <a
+            aria-disabled={props.disabled}
+            className={buttonClass}
+            href={props.href}
+            tabIndex={tabIndex}
+            target={props.target}
+        >
             {slots['left'] && <span className="button__left">{slots['left']}</span>}
 
             {slots['default'] || <span className="button__label">{props.label}</span>}

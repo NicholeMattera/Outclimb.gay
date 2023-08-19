@@ -1,8 +1,10 @@
 import './Event.scss'
 import { useEffect, useState } from 'react'
 import Button from 'components/Button/Button'
+import DateUtil from 'utils/date.utils'
 import Header from 'components/Header/Header'
 import Hero from 'components/Hero/Hero'
+import LinkResponse from 'types/LinkResponse'
 import PageContent from 'components/PageContent/PageContent'
 import useDocumentTitle from 'hooks/useDocumentTitle'
 import useEventStore from 'stores/useEventStore'
@@ -25,6 +27,26 @@ function Event() {
 
     const eventDescription = useLongEventDate(event, status)
 
+    const getLinkName = (link: LinkResponse): string => {
+        if (!link.disabled) {
+            return link.name
+        }
+
+        const showOnDate = new Date(link.showOn)
+        const formattedShowOnDate = DateUtil.formatLongDate(showOnDate)
+        const formattedShowOnTime = DateUtil.formatLongTime(showOnDate)
+
+        return `Registration opens on ${formattedShowOnDate} at ${formattedShowOnTime}`
+    }
+
+    const getLinkUrl = (link: LinkResponse): string | undefined => {
+        if (!link.disabled) {
+            return link.url
+        }
+
+        return undefined
+    }
+
     return (
         <>
             <Header />
@@ -44,7 +66,13 @@ function Event() {
 
                         <div className="event__links">
                             {event.links.map((link) => (
-                                <Button key={link.name} label={link.name} href={link.url} target="_blank" />
+                                <Button
+                                    disabled={link.disabled}
+                                    key={link.name}
+                                    label={getLinkName(link)}
+                                    href={getLinkUrl(link)}
+                                    target="_blank"
+                                />
                             ))}
                         </div>
                     </>
