@@ -43,6 +43,11 @@ function Header() {
             setShowBackdrop(false)
         }
     }, [mobile])
+    useEffect(() => {
+        return () => {
+            document.querySelector('body')?.classList.remove('no-scroll')
+        }
+    }, [])
 
     const hideBackdrop = () => {
         if (!menuIsOpen) {
@@ -82,6 +87,11 @@ function Header() {
                             </button>
                         </div>
                         <ul className="menu__navigation-main">
+                            <li>
+                                <Link to="/" className="menu__navigation-item" tabIndex={menuItemTabIndex}>
+                                    Home
+                                </Link>
+                            </li>
                             <li>
                                 <Link to="/events" className="menu__navigation-item" tabIndex={menuItemTabIndex}>
                                     Events
