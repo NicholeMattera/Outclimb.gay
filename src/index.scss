@@ -1,4 +1,6 @@
 @import 'styles/colors.scss';
+@import 'styles/mixins.scss';
+@import 'styles/queries.scss';
 
 @font-face {
     font-family: 'Montserrat';
@@ -30,6 +32,8 @@ body.no-scroll {
 }
 
 a {
+    @include focus-outline;
+
     color: $deep_purple_400;
     text-decoration: none;
 
@@ -40,19 +44,11 @@ a {
 
     &:focus {
         border-radius: 2px;
-        outline-color: $deep_purple_200;
         outline-offset: 2px;
-        outline-style: solid;
-        outline-width: 2px;
-
-        &:not(:focus-visible) {
-            outline: 0 !important;
-            text-decoration: none;
-        }
     }
 }
 
-@media (prefers-color-scheme: dark) {
+@media screen and ($dark_mode) {
     html,
     body {
         background: $dark_theme_background;

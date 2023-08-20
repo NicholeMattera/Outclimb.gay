@@ -1,3 +1,5 @@
+@import 'styles/queries.scss';
+
 .events {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -5,13 +7,13 @@
     margin: 48px 8px 32px;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and ($tablet) {
     .events {
         grid-template-columns: 1fr 1fr;
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and ($mobile) {
     .events {
         grid-template-columns: 1fr;
     }

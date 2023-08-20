@@ -1,9 +1,9 @@
 @import 'styles/colors.scss';
 
-$button-focus-outline: $deep_purple_700;
-$button-primary-background: $deep_purple_200;
-$button-primary-color: $white;
-$button-primary-disabled-background: $deep_purple_800;
+$button_focus_outline: $deep_purple_700;
+$button_primary_background: $deep_purple_200;
+$button_primary_color: $white;
+$button_primary_disabled_background: $deep_purple_800;
 
 a.button {
     border-radius: 8px;
@@ -15,17 +15,17 @@ a.button {
     text-align: center;
 
     &--primary {
-        background: $button-primary-background;
-        color: $button-primary-color;
+        background: $button_primary_background;
+        color: $button_primary_color;
     }
 
     &--disabled {
-        background: $button-primary-disabled-background;
+        background: $button_primary_disabled_background;
         pointer-events: none;
     }
 
     &:focus {
-        outline-color: $button-focus-outline;
+        outline-color: $button_focus_outline;
         outline-offset: 2px;
         outline-style: solid;
         outline-width: 2px;

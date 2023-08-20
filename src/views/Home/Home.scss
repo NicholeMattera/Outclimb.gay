@@ -1,3 +1,5 @@
+@import 'styles/queries.scss';
+
 .home {
     display: flex;
     flex-direction: column;
@@ -10,13 +12,13 @@
     }
 }
 
-@media screen and (max-width: 991px) {
+@media screen and ($tablet) {
     .home__headline {
         padding: 32px;
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and ($mobile) {
     .home__headline {
         padding: 8px;
         font-size: 28px;

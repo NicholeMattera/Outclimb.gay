@@ -1,4 +1,11 @@
 @import 'styles/colors.scss';
+@import 'styles/mixins.scss';
+@import 'styles/queries.scss';
+
+$hero_content_background_light: $light_theme_background;
+$hero_content_text_color_light: $light_theme_color;
+$hero_content_background_dark: $dark_theme_background;
+$hero_content_text_color_dark: $dark_theme_color;
 
 .hero {
     height: 480px;
@@ -22,10 +29,12 @@
     }
 
     &__content {
-        background: $light_theme_background;
+        @include focus-outline;
+
+        background: $hero_content_background_light;
         border-radius: 0px 16px 0px 0px;
         bottom: 0;
-        color: $light_theme_color;
+        color: $hero_content_text_color_light;
         left: 0;
         padding: 8px 24px 8px 8px;
         position: absolute;
@@ -33,17 +42,6 @@
 
         &:hover {
             text-decoration: none;
-        }
-
-        &:focus {
-            outline-color: $deep_purple_200;
-            outline-style: solid;
-            outline-width: 2px;
-            text-decoration: none;
-
-            &:not(:focus-visible) {
-                outline: 0 !important;
-            }
         }
 
         h2 {
@@ -58,13 +56,13 @@
     }
 }
 
-@media screen and (max-width: 991px) {
+@media screen and ($tablet) {
     .hero__content {
         width: 80%;
     }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and ($mobile) {
     .hero {
         height: 380px;
 
@@ -84,9 +82,9 @@
     }
 }
 
-@media (prefers-color-scheme: dark) {
+@media screen and ($dark_mode) {
     .hero__content {
-        background: $dark_theme_background;
-        color: $dark_theme_color;
+        background: $hero_content_background_dark;
+        color: $hero_content_text_color_dark;
     }
 }

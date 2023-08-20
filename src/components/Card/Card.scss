@@ -1,20 +1,16 @@
 @import 'styles/colors.scss';
+@import 'styles/mixins.scss';
+@import 'styles/queries.scss';
+
+$card_text_color_light: $light_theme_color;
+$card_text_color_dark: $dark_theme_color;
 
 .card {
+    @include focus-outline;
+
     border-radius: 8px;
-    color: $light_theme_color;
+    color: $card_text_color_light;
     position: relative;
-
-    &:focus {
-        outline-color: $deep_purple_200;
-        outline-style: solid;
-        outline-width: 2px;
-
-        &:not(:focus-visible) {
-            outline: 0 !important;
-            text-decoration: none;
-        }
-    }
 
     &__image {
         border-radius: 8px;
@@ -30,8 +26,8 @@
     }
 }
 
-@media (prefers-color-scheme: dark) {
+@media screen and ($dark_mode) {
     .card {
-        color: $dark_theme_color;
+        color: $card_text_color_dark;
     }
 }

@@ -1,8 +1,21 @@
 @import 'styles/colors.scss';
+@import 'styles/mixins.scss';
+@import 'styles/queries.scss';
+
+$header_background_dark: $dark_theme_background;
+$header_background_light: $light_theme_background;
+$header_link_text_color_dark: $dark_theme_color;
+$header_link_text_color_light: $light_theme_color;
+$menu_background_dark: $dark_theme_background;
+$menu_background_light: $light_theme_background;
+$menu_backdrop_background: rgba(0, 0, 0, 0.5);
+$menu_item_border_color: $blue_gray_700;
 
 .header {
+    @include focus-outline;
+
     align-items: center;
-    background: $light_theme_background;
+    background: $header_background_light;
     display: flex;
     font-size: 16px;
     height: 64px;
@@ -18,19 +31,12 @@
     }
 
     a {
-        color: $light_theme_color;
+        color: $header_link_text_color_light;
         display: block;
     }
 
     a:focus {
-        outline-color: $deep_purple_200;
         outline-offset: 0;
-        outline-style: solid;
-        outline-width: 2px;
-
-        &:not(:focus-visible) {
-            outline: 0 !important;
-        }
     }
 
     &__logo,
@@ -94,7 +100,7 @@
             &__menu {
                 background: none;
                 border: none;
-                color: $light_theme_color;
+                color: $header_link_text_color_light;
                 font-size: 24px;
             }
 
@@ -119,7 +125,7 @@
 }
 
 .menu {
-    background: $light_theme_background;
+    background: $menu_background_light;
     height: 100dvh;
     left: -80dvw;
     position: absolute;
@@ -133,7 +139,7 @@
     }
 
     &__backdrop {
-        background: rgba(0, 0, 0, 0.5);
+        background: $menu_backdrop_background;
         display: none;
         height: 100dvh;
         left: 0;
@@ -150,7 +156,7 @@
 
     &__header {
         align-items: center;
-        border-bottom: $blue_gray_700 1px solid;
+        border-bottom: $menu_item_border_color 1px solid;
         display: flex;
         flex: 0 0 64px;
 
@@ -189,40 +195,35 @@
         }
 
         &-item {
-            border-bottom: $blue_gray_700 1px solid;
+            @include focus-outline;
+
+            border-bottom: $menu_item_border_color 1px solid;
             display: block;
             padding: 22px 16px;
 
             &:focus {
-                outline-color: $deep_purple_200;
                 outline-offset: 0;
-                outline-style: solid;
-                outline-width: 2px;
-
-                &:not(:focus-visible) {
-                    outline: 0 !important;
-                }
             }
         }
     }
 }
 
-@media (prefers-color-scheme: dark) {
+@media screen and ($dark_mode) {
     .header {
-        background: $dark_theme_background;
+        background: $header_background_dark;
 
         a {
-            color: $dark_theme_color;
+            color: $header_link_text_color_dark;
         }
 
         &--mobile {
             .header__menu {
-                color: $dark_theme_color;
+                color: $header_link_text_color_dark;
             }
         }
     }
 
     .menu {
-        background: $dark_theme_background;
+        background: $menu_background_dark;
     }
 }
