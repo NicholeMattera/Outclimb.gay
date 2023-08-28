@@ -55,6 +55,12 @@ func initAndMigrate(db *sql.DB) {
 		log.Fatal("Error commiting transaction for database initialization", err)
 		return
 	}
+
+	// Add hidden field to Events
+	err = db.QueryRow("SHOW COLUMNS FROM `events` LIKE 'hidden'").Scan()
+	if err == sql.ErrNoRows {
+		db.Exec("ALTER TABLE events ADD hidden boolean NOT NULL DEFAULT false")
+	}
 }
 
 func Database() gin.HandlerFunc {

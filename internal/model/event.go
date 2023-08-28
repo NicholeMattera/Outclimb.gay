@@ -74,6 +74,7 @@ func GetEvents(db *sql.DB) (events []Event, err error) {
 		FROM events
 		LEFT JOIN categories ON
 			categories.id = events.category_id
+		WHERE hidden = 0
 		ORDER BY dateStart
 	`
 	rows, err := db.Query(query)
@@ -115,7 +116,7 @@ func GetEvent(db *sql.DB, slug string) (event Event, err error) {
 		FROM events
 		LEFT JOIN categories ON
 			categories.id = events.category_id
-		WHERE slug = ?
+		WHERE slug = ? AND hidden = 0
 		ORDER BY dateStart
 		LIMIT 1
 	`
@@ -148,7 +149,7 @@ func GetNextEvent(db *sql.DB, category string) (event Event, err error) {
 		FROM events
 		LEFT JOIN categories ON
 			categories.id = events.category_id
-		WHERE categories.name = ? AND dateStart > DATE_ADD(NOW(), INTERVAL -1 DAY)
+		WHERE categories.name = ? AND dateStart > DATE_ADD(NOW(), INTERVAL -1 DAY) AND hidden = 0
 		ORDER BY dateStart
 		LIMIT 1
 	`
