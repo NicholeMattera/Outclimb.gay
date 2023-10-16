@@ -116,7 +116,7 @@ func GetEvent(db *sql.DB, slug string) (event Event, err error) {
 		FROM events
 		LEFT JOIN categories ON
 			categories.id = events.category_id
-		WHERE slug = ? AND hidden = 0
+		WHERE slug = ?
 		ORDER BY dateStart
 		LIMIT 1
 	`
