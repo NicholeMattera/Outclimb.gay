@@ -6,10 +6,6 @@ $header_background_dark: $dark_theme_background;
 $header_background_light: $light_theme_background;
 $header_link_text_color_dark: $dark_theme_color;
 $header_link_text_color_light: $light_theme_color;
-$menu_background_dark: $dark_theme_background;
-$menu_background_light: $light_theme_background;
-$menu_backdrop_background: rgba(0, 0, 0, 0.5);
-$menu_item_border_color: $blue_gray_700;
 
 .header {
     @include focus-outline;
@@ -37,6 +33,10 @@ $menu_item_border_color: $blue_gray_700;
 
     a:focus {
         outline-offset: 0;
+    }
+
+    &__donate-button a:focus {
+        outline-offset: 2px;
     }
 
     &__logo,
