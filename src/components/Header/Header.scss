@@ -35,6 +35,22 @@ $header_link_text_color_light: $light_theme_color;
         outline-offset: 0;
     }
 
+    &__skip-to-content {
+        background: $header_background_light;
+        color: $header_link_text_color_light;
+        height: 30px;
+        left: calc(50% - 69px);
+        padding: 8px;
+        position: absolute;
+        top: 0;
+        transform: translateY(-100%);
+        transition: transform 0.3s;
+
+        &:focus {
+            transform: translateY(0%);
+        }
+    }
+
     &__donate-button a:focus {
         outline-offset: 2px;
     }
@@ -129,6 +145,11 @@ $header_link_text_color_light: $light_theme_color;
         background: $header_background_dark;
 
         a {
+            color: $header_link_text_color_dark;
+        }
+
+        &__skip-to-content {
+            background: $header_background_dark;
             color: $header_link_text_color_dark;
         }
 
