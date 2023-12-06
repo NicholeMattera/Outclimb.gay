@@ -35,7 +35,9 @@ function Header() {
 
     return (
         <header className={headerClass}>
-            <a className="header__skip-to-content" href='#main'>Skip to content</a>
+            <a className="header__skip-to-content" href="#main">
+                Skip to content
+            </a>
 
             {mobile && (
                 <>
@@ -68,6 +70,11 @@ function Header() {
                             <li>
                                 <Link to="/events" className="header__nav-item">
                                     Events
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to="/meet-the-team" className="header__nav-item">
+                                    Meet the Team
                                 </Link>
                             </li>
                             <li>

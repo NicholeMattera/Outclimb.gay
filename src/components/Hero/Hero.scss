@@ -8,7 +8,7 @@ $hero_content_background_dark: $dark_theme_background;
 $hero_content_text_color_dark: $dark_theme_color;
 
 .hero {
-    height: 480px;
+    aspect-ratio: 2.65;
     position: relative;
 
     &__image {
