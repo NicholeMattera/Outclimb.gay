@@ -8,15 +8,14 @@ $hero_content_background_dark: $dark_theme_background;
 $hero_content_text_color_dark: $dark_theme_color;
 
 .hero {
-    height: 480px;
+    aspect-ratio: 2.65;
     position: relative;
 
     &__image {
-        background-position: center center;
-        background-size: cover;
         border-radius: 12px;
         height: 100%;
         left: 0;
+        object-fit: cover;
         position: absolute;
         top: 0;
         width: 100%;
@@ -64,8 +63,6 @@ $hero_content_text_color_dark: $dark_theme_color;
 
 @media screen and ($mobile) {
     .hero {
-        height: 380px;
-
         &__content {
             border-radius: 0;
             padding: 8px;
