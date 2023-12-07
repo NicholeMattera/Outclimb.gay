@@ -7,22 +7,19 @@ type BlurbProps = {
     children?: React.ReactNode
     height?: string
     image: string
+    image2x?: string
     imageAlt: string
     type: BlurbType
 }
 
 function Blurb(props: BlurbProps) {
-    const imageStyles = useMemo(() => {
-        return {
-            backgroundImage: `url(${props.image})`,
+    const imageSourceSet = useMemo(() => {
+        if (props.image2x) {
+            return `${props.image} 1x, ${props.image2x} 2x`
         }
-    }, [props.image])
 
-    const blurbStyle = useMemo(() => {
-        return {
-            height: props.height || 'auto',
-        }
-    }, [props.height])
+        return `${props.image} 1x`
+    }, [props.image, props.image2x])
 
     const blurbClasses = classNames({
         blurb: true,
@@ -30,8 +27,8 @@ function Blurb(props: BlurbProps) {
     })
 
     return (
-        <div className={blurbClasses} style={blurbStyle}>
-            <div aria-label={props.imageAlt} className="blurb__image" role="img" style={imageStyles} />
+        <div className={blurbClasses}>
+            <img srcSet={imageSourceSet} alt={props.imageAlt} className="blurb__image" />
             <div className="blurb__content">{props.children}</div>
         </div>
     )

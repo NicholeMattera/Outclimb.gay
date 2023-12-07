@@ -3,22 +3,29 @@
 .blurb {
     align-items: center;
     display: flex;
+    gap: 24px;
 
     &--image-right {
         flex-direction: row-reverse;
     }
 
     &__image {
+        aspect-ratio: 1.979166;
         background-position: center center;
         background-size: cover;
         border-radius: 8px;
-        flex: 0 0 40%;
-        height: 100%;
+        flex: 0 1;
     }
 
     &__content {
-        flex: 1 1 auto;
-        padding: 32px 0 32px 24px;
+        flex: 1 0;
+        padding: 32px 0;
+    }
+}
+
+@media screen and ($tablet) {
+    .blurb__image {
+        width: 300px;
     }
 }
 
@@ -29,7 +36,6 @@
 
         &__image {
             flex: none;
-            height: 180px;
             width: 100%;
         }
 

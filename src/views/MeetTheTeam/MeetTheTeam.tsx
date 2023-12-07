@@ -13,21 +13,29 @@ function MeetTheTeam() {
         <>
             <Header />
             <PageContent>
-                <div className="meet-the-team">
-                    <Hero
-                        image="/assets/images/meet_the_team.webp"
-                        image2x="/assets/images/meet_the_team-2x.webp"
-                        imageAlt=""
-                        title="Meet the Team"
-                    />
+                <Hero
+                    image="/assets/images/meet_the_team.webp"
+                    image2x="/assets/images/meet_the_team-2x.webp"
+                    imageAlt=""
+                    title="Meet the Team"
+                />
 
+                <div className="meet-the-team">
                     <Blurb
                         height="240px"
-                        image="/assets/images/home1.webp"
+                        image="/assets/images/dustin.webp"
+                        image2x="/assets/images/dustin-2x.webp"
                         imageAlt="Photo from a skill share event at Sugar Loaf Bluff on July 26th 2023"
                         type={BlurbType.ImageLeft}
                     >
                         <h2>Dustin (He/Him)</h2>
+                        <p>
+                            I have been helping with OutClimb since 2019 and took over leadership in early 2023. I
+                            started climbing in 2012 while I was going to school in Denver. I was really lucky to have
+                            an inexpensive and comprehensive introduction to climbing all the way up to leading trad. I
+                            recognize not everyone will be able to overcome the high bar of access to knowledge, skills,
+                            and opportunity, so I want to work at making it as easy to start climbing as I can.
+                        </p>
                     </Blurb>
 
                     <Blurb
