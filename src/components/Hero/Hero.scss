@@ -63,9 +63,19 @@ $hero_content_text_color_dark: $dark_theme_color;
 
 @media screen and ($mobile) {
     .hero {
+        aspect-ratio: auto;
+
+        &__image {
+            position: relative;
+            height: auto;
+        }
+
         &__content {
             border-radius: 0;
-            padding: 8px;
+            bottom: auto;
+            left: auto;
+            padding: 0;
+            position: relative;
             width: 100%;
 
             h2 {
