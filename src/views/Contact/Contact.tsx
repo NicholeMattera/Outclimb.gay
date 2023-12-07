@@ -13,6 +13,7 @@ function Contact() {
             <PageContent>
                 <Hero
                     image="/assets/images/contact.webp"
+                    image2x="/assets/images/contact-2x.webp"
                     imageAlt="Photo of Matt, Randi, Nickel, and Dustin on top of Sugar Loaf Bluff"
                     title="Contact Us"
                 />

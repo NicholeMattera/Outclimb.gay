@@ -6,16 +6,19 @@ type HeroProps = {
     description?: string
     href?: string
     image: string
+    image2x?: string
     imageAlt: string
     title?: string
 }
 
 function Hero(props: HeroProps) {
-    const imageStyles = useMemo(() => {
-        return {
-            backgroundImage: `url(${props.image})`,
+    const imageSourceSet = useMemo(() => {
+        if (props.image2x) {
+            return `${props.image} 1x, ${props.image2x} 2x`
         }
-    }, [props.image])
+
+        return `${props.image} 1x`
+    }, [props.image, props.image2x])
 
     const renderContent = (description?: string, href?: string, title?: string) => {
         if (href && title && description) {
@@ -59,7 +62,7 @@ function Hero(props: HeroProps) {
 
     return (
         <div className="hero">
-            <div aria-label={props.imageAlt} className="hero__image" role="img" style={imageStyles} />
+            <img srcSet={imageSourceSet} alt={props.imageAlt} className="hero__image" />
             {renderContent(props.description, props.href, props.title)}
         </div>
     )
