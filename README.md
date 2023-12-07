@@ -13,10 +13,10 @@ Outclimb.gay is a website for Outclimb, a Minneapolis-based organization dedicat
 1. Make sure you have both Go v1.20 and MySQL/MariaDB installed locally
 2. Create a database and user in your database for the service to use. Make sure the user has appropriate permissions to the database.
 3. Set the following environment variables:
-   - `OUTCLIMB_DB_HOST` - The address of the server. (Ex. localhost or 127.0.0.1)
-   - `OUTCLIMB_DB_NAME` - The name of the database you created in step 2. (Ex. outclimb)
-   - `OUTCLIMB_DB_USER` - The username of the user you created in step 2. (Ex. outclimb)
-   - `OUTCLIMB_DB_PASSWORD` - The password for the user you created in step 2.
+    - `OUTCLIMB_DB_HOST` - The address of the server. (Ex. localhost or 127.0.0.1)
+    - `OUTCLIMB_DB_NAME` - The name of the database you created in step 2. (Ex. outclimb)
+    - `OUTCLIMB_DB_USER` - The username of the user you created in step 2. (Ex. outclimb)
+    - `OUTCLIMB_DB_PASSWORD` - The password for the user you created in step 2.
 4. From the root of the project run `go mod download && go mod verify` to download all the backend dependencies.
 5. From the root of the project run `go run cmd/main.go` to run the service.
 

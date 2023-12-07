@@ -1,5 +1,8 @@
-assets/
+.github/
+.husky/
 cmd/
 dist/
 internal/
 node_modules/
+public/
+package-lock.json

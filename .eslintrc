@@ -9,10 +9,10 @@
         "plugin:react-hooks/recommended",
         "plugin:import/recommended",
         "plugin:@typescript-eslint/recommended",
-        "eslint-config-prettier"
+        "plugin:prettier/recommended"
     ],
     "parser": "@typescript-eslint/parser",
-    "plugins": ["react-refresh"],
+    "plugins": ["react-refresh", "prettier"],
     "root": true,
     "rules": {
         "react/react-in-jsx-scope": "off",

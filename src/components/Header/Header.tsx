@@ -35,7 +35,9 @@ function Header() {
 
     return (
         <header className={headerClass}>
-            <a className="header__skip-to-content" href='#main'>Skip to content</a>
+            <a className="header__skip-to-content" href="#main">
+                Skip to content
+            </a>
 
             {mobile && (
                 <>
