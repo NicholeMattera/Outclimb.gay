@@ -39,6 +39,7 @@ function Home() {
                     <Blurb
                         height="240px"
                         image="/assets/images/home1.webp"
+                        image2x="/assets/images/home1-2x.webp"
                         imageAlt="Photo from a skill share event at Sugar Loaf Bluff on July 26th 2023"
                         type={BlurbType.ImageLeft}
                     >
@@ -53,6 +54,7 @@ function Home() {
                     <Blurb
                         height="240px"
                         image="/assets/images/home2.webp"
+                        image2x="/assets/images/home2-2x.webp"
                         imageAlt="Group photo from an outdoor meet-up at Interstate State Park on March 27th 2023"
                         type={BlurbType.ImageRight}
                     >
