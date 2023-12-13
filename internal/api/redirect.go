@@ -16,6 +16,7 @@ func NewRedirectHandler(router *gin.Engine) {
 
 	router.GET("/donate", redirectHandler.Donate)
 	router.GET("/register", redirectHandler.Register)
+	router.GET("/2024sandstoneicefest", redirectHandler.IceFestival)
 }
 
 func (*RedirectHandler) Donate(c *gin.Context) {
@@ -36,4 +37,8 @@ func (*RedirectHandler) Register(c *gin.Context) {
 	}
 
 	c.Redirect(http.StatusTemporaryRedirect, link.URL)
+}
+
+func (*RedirectHandler) IceFestival(c *gin.Context) {
+	c.Redirect(http.StatusTemporaryRedirect, "https://www.eventbrite.com/e/2024-sandstone-ice-climbing-festival-tickets-723108445827?aff=oddtdtcreator")
 }
