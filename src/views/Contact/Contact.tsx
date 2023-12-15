@@ -1,4 +1,6 @@
 import './Contact.scss'
+import Button from 'components/Button/Button'
+import { ButtonType } from 'types/ButtonType'
 import Header from 'components/Header/Header'
 import Hero from 'components/Hero/Hero'
 import PageContent from 'components/PageContent/PageContent'
@@ -19,24 +21,39 @@ function Contact() {
                 />
 
                 <div className="contact">
-                    <p>
-                        <strong>Phone</strong>: (612) 440-9209
-                    </p>
-                    <p>
-                        <strong>Email</strong>: <a href="mailto:info@outclimb.gay">info@outclimb.gay</a>
-                    </p>
-                    <p>
-                        <strong>Facebook</strong>:{' '}
-                        <a href="https://www.facebook.com/groups/1070762049768453" rel="noreferrer" target="blank">
-                            OutClimb MN
+                    <div className="contact__methods">
+                        <Button href="tel:+1-612-440-9209" label="(612) 440-9209" type={ButtonType.Primary} />
+                        <Button href="mailto:info@outclimb.gay" label="info@outclimb.gay" type={ButtonType.Primary} />
+                    </div>
+                    <div className="contact__social">
+                        <a
+                            className="contact__social-item contact__social-item--facebook"
+                            href="https://www.facebook.com/groups/1070762049768453"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            <i aria-hidden="true" className="fa-brands fa-square-facebook"></i>
+                            <span className="fa-sr-only">Facebook Group</span>
                         </a>
-                    </p>
-                    <p>
-                        <strong>Instagram</strong>:{' '}
-                        <a href="https://www.instagram.com/outclimbmn" rel="noreferrer" target="blank">
-                            @outclimbmn
+                        <a
+                            className="contact__social-item contact__social-item--instagram"
+                            href="https://www.instagram.com/outclimbmn"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            <i aria-hidden="true" className="fa-brands fa-square-instagram"></i>
+                            <span className="fa-sr-only">Instagram</span>
                         </a>
-                    </p>
+                        <a
+                            className="contact__social-item contact__social-item--discord"
+                            href="https://discord.outclimb.gay"
+                            target="_blank"
+                            rel="noreferrer"
+                        >
+                            <i aria-hidden="true" className="fa-brands fa-discord"></i>
+                            <span className="fa-sr-only">Discord Server</span>
+                        </a>
+                    </div>
                 </div>
             </PageContent>
         </>

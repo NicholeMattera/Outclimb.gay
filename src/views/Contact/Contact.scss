@@ -1,3 +1,76 @@
+@import 'styles/colors.scss';
+@import 'styles/queries.scss';
+
+$social_link_text_color_dark: $dark_theme_color;
+$social_link_text_color_light: $light_theme_color;
+
 .contact {
     margin: 48px 8px 32px;
+    text-align: center;
+
+    &__methods {
+        align-items: center;
+        display: flex;
+        gap: 16px;
+        justify-content: center;
+        & > .button {
+            width: 225px;
+        }
+    }
+
+    &__social {
+        align-items: center;
+        display: flex;
+        font-size: 32px;
+        gap: 16px;
+        justify-content: center;
+        margin-top: 32px;
+
+        &-item {
+            color: $social_link_text_color_light;
+            padding: 6px;
+
+            &--facebook:hover,
+            &--facebook:focus {
+                color: $facebook;
+                text-decoration: none;
+            }
+
+            &--discord:hover,
+            &--discord:focus {
+                color: $discord;
+                text-decoration: none;
+            }
+
+            &--instagram:hover,
+            &--instagram:focus {
+                color: $instagram;
+                text-decoration: none;
+            }
+
+            &:focus:not(:focus-visible) {
+                color: $social_link_text_color_light;
+            }
+        }
+    }
+}
+
+@media screen and ($mobile) {
+    .contact__methods {
+        flex-direction: column;
+
+        & > .button {
+            width: 100%;
+        }
+    }
+}
+
+@media screen and ($dark_mode) {
+    .contact__social-item {
+        color: $social_link_text_color_dark;
+
+        &:focus:not(:focus-visible) {
+            color: $social_link_text_color_dark;
+        }
+    }
 }
