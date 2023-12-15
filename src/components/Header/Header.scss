@@ -51,8 +51,11 @@ $header_link_text_color_light: $light_theme_color;
         }
     }
 
-    &__donate-button a:focus {
-        outline-offset: 2px;
+    &__donate-button a {
+        color: $header_link_text_color_dark;
+        &:focus {
+            outline-offset: 2px;
+        }
     }
 
     &__logo,
