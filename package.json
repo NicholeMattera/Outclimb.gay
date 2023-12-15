@@ -34,6 +34,7 @@
         "eslint-plugin-react-refresh": "^0.4.5",
         "husky": "^8.0.3",
         "lint-staged": "^15.2.0",
+        "mysql2": "^3.6.5",
         "sass": "^1.64.5",
         "typescript": "^5.3.3",
         "vite": "^5.0.9",

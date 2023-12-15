@@ -5,3 +5,4 @@ dist/
 internal/
 node_modules/
 public/
+scripts/
