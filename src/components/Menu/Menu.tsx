@@ -94,6 +94,11 @@ function Menu({ onClose, open }: MenuProps) {
                                 </Link>
                             </li>
                             <li>
+                                <Link to="/meet-the-team" className="menu__navigation-item" tabIndex={menuItemTabIndex}>
+                                    Meet the Team
+                                </Link>
+                            </li>
+                            <li>
                                 <Link to="/contact" className="menu__navigation-item" tabIndex={menuItemTabIndex}>
                                     Contact
                                 </Link>

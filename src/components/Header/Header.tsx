@@ -73,6 +73,11 @@ function Header() {
                                 </Link>
                             </li>
                             <li>
+                                <Link to="/meet-the-team" className="header__nav-item">
+                                    Meet the Team
+                                </Link>
+                            </li>
+                            <li>
                                 <Link to="/contact" className="header__nav-item">
                                     Contact
                                 </Link>
