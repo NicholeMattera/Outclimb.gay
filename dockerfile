@@ -3,7 +3,7 @@ FROM node:lts AS frontend
 COPY . /app
 WORKDIR /app
 
-RUN npm install
+RUN npm ci
 RUN npm run build
 
 

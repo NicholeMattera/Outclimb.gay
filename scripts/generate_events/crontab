@@ -1,0 +1,1 @@
+0 0 15 * *  /usr/local/bin/node /app/scripts/generate_events/index.js
