@@ -61,6 +61,15 @@ func initAndMigrate(db *sql.DB) {
 	if err == sql.ErrNoRows {
 		db.Exec("ALTER TABLE events ADD hidden boolean NOT NULL DEFAULT false")
 	}
+
+	// Add additional image fields to Events
+	err = db.QueryRow("SHOW COLUMNS FROM `events` LIKE 'image2x'").Scan()
+	if err == sql.ErrNoRows {
+		db.Exec(`ALTER TABLE events
+		ADD smallImage2x text NULL DEFAULT NULL AFTER image,
+		ADD smallImage text NULL DEFAULT NULL AFTER image,
+		ADD image2x text NULL DEFAULT NULL AFTER image;`)
+	}
 }
 
 func Database() gin.HandlerFunc {
