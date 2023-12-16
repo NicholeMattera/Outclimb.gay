@@ -1,5 +1,4 @@
 {
-    "*.{js,jsx,ts,tsx}": ["prettier --write", "eslint"],
-    "*.scss": ["prettier --write"],
-    "*.json": ["prettier --write"]
+    "*.{js,jsx,ts,tsx}": ["prettier --write --ignore-unknown", "eslint"],
+    "**/*.{scss,json}": "prettier --write --ignore-unknown"
 }
