@@ -58,6 +58,7 @@ function Event() {
                         <Hero
                             description={eventDescription}
                             image={event.image}
+                            image2x={event.image2x}
                             imageAlt={event.imageAlt}
                             title={event.name}
                         />

@@ -26,6 +26,7 @@ function Home() {
                             description={eventStart}
                             href={`/events/${event.slug}`}
                             image={event.image}
+                            image2x={event.image2x}
                             imageAlt={event.imageAlt}
                             title={event.name}
                         />

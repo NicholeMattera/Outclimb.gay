@@ -4,6 +4,9 @@ type EventResponse = {
     body: string
     endTime: number
     image: string
+    image2x: string
+    smallImage: string
+    smallImage2x: string
     imageAlt: string
     links: LinkResponse[]
     name: string

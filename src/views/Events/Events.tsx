@@ -53,7 +53,8 @@ function Events() {
                             <Card
                                 description={getEventDescription(event)}
                                 href={`/events/${event.slug}`}
-                                image={event.image}
+                                image={event.smallImage || event.image}
+                                image2x={event.smallImage2x || event.image2x}
                                 imageAlt={event.imageAlt}
                                 key={event.slug}
                                 title={event.name}
