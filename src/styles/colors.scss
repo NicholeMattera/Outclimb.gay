@@ -1,8 +1,5 @@
 // Color Palette
 
-$black: #000;
-$white: #fff;
-
 $blue_gray_50: #eceff1;
 $blue_gray_100: #cfd8dc;
 $blue_gray_200: #b0bec5;
@@ -13,6 +10,11 @@ $blue_gray_600: #546e7a;
 $blue_gray_700: #455a64;
 $blue_gray_800: #37474f;
 $blue_gray_900: #263238;
+
+$gray_0: #fff;
+$gray_800: #424242;
+$gray_900: #212121;
+$gray_1000: #000;
 
 $deep_purple_100: #b388ff;
 $deep_purple_200: #7c4dff;
@@ -28,7 +30,7 @@ $instagram: #e1306c;
 
 // Themes
 
-$dark_theme_background: $blue_gray_900;
+$dark_theme_background: $gray_900;
 $dark_theme_color: $blue_gray_50;
 $light_theme_background: $blue_gray_50;
 $light_theme_color: $blue_gray_900;
