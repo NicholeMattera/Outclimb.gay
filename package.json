@@ -2,6 +2,11 @@
     "name": "outclimb-gay",
     "private": true,
     "version": "1.0.0",
+    "author": "Nichole Mattera <me@nicholemattera.gay> (https://nicholemattera.gay)",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:OutClimb/Outclimb.gay.git"
+    },
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build",

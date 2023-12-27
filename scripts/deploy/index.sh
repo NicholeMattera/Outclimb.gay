@@ -4,7 +4,7 @@ echo "🧹 Cleaning up temp directory"
 rm -rf /tmp/outclimb
 
 echo "📦 Downloading the latest"
-git clone https://github.com/NicholeMattera/Outclimb.gay.git /tmp/outclimb
+git clone https://github.com/OutClimb/Outclimb.gay.git /tmp/outclimb
 cd /tmp/outclimb
 
 echo "🩹 Patching configs"
