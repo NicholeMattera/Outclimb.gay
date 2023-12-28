@@ -22,6 +22,16 @@ function MeetTheTeam() {
         },
         {
             image: {
+                normal: '/assets/images/randi.webp',
+                double: '/assets/images/randi-2x.webp',
+            },
+            name: 'Randi',
+            pronouns: 'They/Them',
+            description:
+                "My rock climbing journey started back in April of 2022 where I quickly fell in love with the sport as well as the lovely queer climbing community surrounding it. As a person who is afraid of heights I never thought I'd be up on ANY walls, let alone sport climbing routes outside! Thanks to this community, and a lot of encouragement on the wall, I've found a deep love in learning about climbing outside and how to do so while also caring for the local natural environments we inhabit.",
+        },
+        {
+            image: {
                 normal: '/assets/images/nickel.webp',
                 double: '/assets/images/nickel-2x.webp',
             },
