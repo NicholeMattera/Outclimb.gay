@@ -10,12 +10,7 @@ func SetupRouter() *gin.Engine {
 	router.Use(middleware.Database())
 
 	// Frontend Routes
-	router.StaticFile("/index.html", "./dist/index.html")
-	router.Static("/assets", "./dist/assets")
-	router.NoRoute(func(c *gin.Context) {
-		c.Header("Content-Type", "text/html; charset=utf-8")
-		c.File("./dist/index.html")
-    })
+	NewFrontendHandler(router)
 
 	// Redirect Routes
 	NewRedirectHandler(router)
