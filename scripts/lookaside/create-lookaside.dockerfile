@@ -1,5 +1,8 @@
 FROM node:lts
 
+ARG BRANCH_NAME
+ENV LOOKASIDE ${BRANCH_NAME}
+
 COPY . /app
 WORKDIR /app
 

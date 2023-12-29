@@ -8,7 +8,7 @@ git clone --brance $2 --depth 1 https://github.com/OutClimb/Outclimb.gay.git /tm
 cd /tmp/outclimb-lookaside
 
 if [ $1 = "create" ]; then
-    docker build --tag outclimbgay_create-lookaside:latest -f scripts/lookaside/create-lookaside.dockerfile .
+    docker build --build-arg="BRANCH_NAME=$2" --tag outclimbgay_create-lookaside:latest -f scripts/lookaside/create-lookaside.dockerfile .
     docker run -e BRANCH_NAME=$2 -v outclimbgay3_lookasides:/lookaside outclimbgay_create-lookaside
 
     echo "🧹 Cleaning up container and image"
