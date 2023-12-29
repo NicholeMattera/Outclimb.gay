@@ -4,6 +4,7 @@ import DateUtil from 'utils/date.utils'
 import EventResponse from 'types/EventResponse'
 import Header from 'components/Header/Header'
 import Hero from 'components/Hero/Hero'
+import { HeroType } from 'types/HeroType'
 import PageContent from 'components/PageContent/PageContent'
 import useDocumentTitle from 'hooks/useDocumentTitle'
 import useEventStore from 'stores/useEventStore'
@@ -37,14 +38,9 @@ function Events() {
     return (
         <>
             <Header />
-            <PageContent>
-                <Hero
-                    image="/assets/images/events.webp"
-                    image2x="/assets/images/events-2x.webp"
-                    imageAlt="Photo from a meetup on July 20th 2023 at Bouldering Project in Minneapolis"
-                    title="Upcoming Events"
-                />
+            <Hero image="/assets/images/events.webp" image2x="/assets/images/events-2x.webp" type={HeroType.Short} />
 
+            <PageContent title="Upcoming Events">
                 {status === 'loading' && <p>Loading</p>}
                 {status === 'error' && error != null && <h2>{error.toString()}</h2>}
                 {status === 'success' && events && (

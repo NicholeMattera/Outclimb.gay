@@ -5,13 +5,11 @@ $social_link_text_color_dark: $dark_theme_color;
 $social_link_text_color_light: $light_theme_color;
 
 .contact {
-    margin: 48px 8px 32px;
-    text-align: center;
-
     &__methods {
         align-items: center;
         display: flex;
         gap: 16px;
+        grid-column: content;
         justify-content: center;
         & > .button {
             width: 225px;
@@ -23,6 +21,7 @@ $social_link_text_color_light: $light_theme_color;
         display: flex;
         font-size: 32px;
         gap: 16px;
+        grid-column: content;
         justify-content: center;
         margin-top: 32px;
 

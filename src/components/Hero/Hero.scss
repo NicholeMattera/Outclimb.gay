@@ -8,90 +8,57 @@ $hero_content_background_dark: $dark_theme_background;
 $hero_content_text_color_dark: $dark_theme_color;
 
 .hero {
-    aspect-ratio: 2.65;
+    grid-column: full;
+    height: 65dvh;
     position: relative;
 
-    &__image {
-        border-radius: 12px;
-        height: 100%;
-        left: 0;
-        object-fit: cover;
-        position: absolute;
-        top: 0;
-        width: 100%;
+    &--short {
+        height: 40dvh;
     }
 
-    a.hero__content {
-        &:hover h2 {
-            text-decoration: underline;
-        }
+    &__image {
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
     }
 
     &__content {
         @include focus-outline;
 
-        background: $hero_content_background_light;
-        border-radius: 0px 16px 0px 0px;
+        align-items: center;
         bottom: 0;
-        color: $hero_content_text_color_light;
+        display: flex;
+        height: 100%;
+        justify-content: center;
         left: 0;
-        padding: 8px 24px 8px 8px;
         position: absolute;
-        width: 60%;
+        text-align: center;
+        width: 100%;
 
-        &:hover {
-            text-decoration: none;
+        & a {
+            align-items: center;
+            color: $hero_content_text_color_dark;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        h2,
+        p {
+            background: rgba($hero_content_background_dark, 0.5);
+            text-shadow: $hero_content_text_color_light 1px 2px 2px;
         }
 
         h2 {
+            box-shadow: 0 0 32px 32px rgba($hero_content_background_dark, 0.5);
             font-size: 40px;
             margin: 16px 0 8px;
         }
 
         p {
+            box-shadow: 0 0 16px 16px rgba($hero_content_background_dark, 0.5);
             font-size: 20px;
             margin: 12px 0 0;
         }
-    }
-}
-
-@media screen and ($tablet) {
-    .hero__content {
-        width: 80%;
-    }
-}
-
-@media screen and ($mobile) {
-    .hero {
-        aspect-ratio: auto;
-
-        &__image {
-            position: relative;
-            height: auto;
-        }
-
-        &__content {
-            border-radius: 0;
-            bottom: auto;
-            left: auto;
-            padding: 0;
-            position: relative;
-            width: 100%;
-
-            h2 {
-                font-size: 28px;
-            }
-
-            p {
-                font-size: 20px;
-            }
-        }
-    }
-}
-
-@media screen and ($dark_mode) {
-    .hero__content {
-        background: $hero_content_background_dark;
-        color: $hero_content_text_color_dark;
     }
 }

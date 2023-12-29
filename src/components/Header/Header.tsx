@@ -1,17 +1,15 @@
 import './Header.scss'
-import { useMemo, useState } from 'react'
 import Button from 'components/Button/Button'
 import { ButtonType } from 'types/ButtonType'
 import classNames from 'classnames'
 import Link from '../Link/Link'
+import Logo from 'components/Logo/Logo'
 import Menu from 'components/Menu/Menu'
-import useDarkMode from 'hooks/useDarkMode'
 import useMobile from 'hooks/useMobile'
-import useVersion from 'hooks/useVersion'
+import { useState } from 'react'
 import useWindowScroll from 'hooks/useWindowScroll'
 
 function Header() {
-    const darkMode = useDarkMode()
     const mobile = useMobile()
     const windowScrollPosition = useWindowScroll()
     const headerClass = classNames({
@@ -19,19 +17,6 @@ function Header() {
         'header--mobile': mobile,
         'header--shadow': windowScrollPosition[1] > 0,
     })
-
-    const version = useVersion()
-    const headerImage = useMemo(() => {
-        if (darkMode && version) {
-            return `/assets/images/logo_dark.webp?version=${version}`
-        } else if (darkMode) {
-            return '/assets/images/logo_dark.webp'
-        } else if (version) {
-            return `/assets/images/logo_light.webp?version=${version}`
-        }
-
-        return '/assets/images/logo_light.webp'
-    }, [darkMode, version])
 
     const [menuIsOpen, setMenuIsOpen] = useState(false)
 
@@ -59,7 +44,7 @@ function Header() {
                     </div>
 
                     <h1 className="header__logo">
-                        <img src={headerImage} height="32" alt="OutClimb" />
+                        <Logo height="48px" />
                     </h1>
 
                     <div className="header__button-area header__button-area--right"></div>
@@ -72,7 +57,7 @@ function Header() {
                 <>
                     <h1 className="header__logo">
                         <Link to="/">
-                            <img src={headerImage} height="32" alt="OutClimb" />
+                            <Logo height="48px" />
                         </Link>
                     </h1>
                     <nav className="header__navigation">

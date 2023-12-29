@@ -1,4 +1,6 @@
 import './Hero.scss'
+import classNames from 'classnames'
+import { HeroType } from 'types/HeroType'
 import Link from '../Link/Link'
 import useImageSourceSet from 'hooks/useImageSourceSet'
 
@@ -7,8 +9,8 @@ type HeroProps = {
     href?: string
     image: string
     image2x?: string
-    imageAlt: string
     title?: string
+    type?: HeroType
 }
 
 function Hero(props: HeroProps) {
@@ -17,35 +19,36 @@ function Hero(props: HeroProps) {
     const renderContent = (description?: string, href?: string, title?: string) => {
         if (href && title && description) {
             return (
-                <Link to={href} className="hero__content">
+                <div className="hero__content">
                     <hgroup>
-                        <h2>{props.title}</h2>
-                        <p>{props.description}</p>
+                        <Link to={href}>
+                            <h2>{title}</h2>
+                            <p>{description}</p>
+                        </Link>
                     </hgroup>
-                </Link>
+                </div>
             )
         } else if (href && (title || description)) {
             return (
-                <Link to={href} className="hero__content">
+                <div className="hero__content">
                     <h2>
-                        {props.title}
-                        {props.description}
+                        <Link to={href}>{title || description}</Link>
                     </h2>
-                </Link>
+                </div>
             )
         } else if (title && description) {
             return (
                 <div className="hero__content">
-                    <h2>{props.title}</h2>
-                    <p>{props.description}</p>
+                    <h2>{title}</h2>
+                    <p>{description}</p>
                 </div>
             )
         } else if (title || description) {
             return (
                 <div className="hero__content">
                     <h2>
-                        {props.title}
-                        {props.description}
+                        {title}
+                        {description}
                     </h2>
                 </div>
             )
@@ -54,9 +57,14 @@ function Hero(props: HeroProps) {
         return
     }
 
+    const heroClasses = classNames({
+        hero: true,
+        ['hero--short']: props.type === HeroType.Short,
+    })
+
     return (
-        <div className="hero">
-            <img srcSet={imageSourceSet} alt={props.imageAlt} className="hero__image" />
+        <div className={heroClasses}>
+            <img aria-hidden="true" className="hero__image" srcSet={imageSourceSet} />
             {renderContent(props.description, props.href, props.title)}
         </div>
     )

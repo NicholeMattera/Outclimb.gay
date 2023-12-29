@@ -1,6 +1,14 @@
 .page-content {
-    margin: 0 auto;
-    max-width: 1336px;
-    padding: 32px;
-    width: 100%;
+    display: grid;
+    grid-template-columns:
+        [full-start] minmax(32px, 1fr)
+        [content-start] min(100% - 64px, 1024px)
+        [content-end] minmax(32px, 1fr)
+        [full-end];
+    margin-bottom: 64px;
+
+    &__title {
+        grid-column: content;
+        margin: 24px 0;
+    }
 }

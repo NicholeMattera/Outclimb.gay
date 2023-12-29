@@ -3,6 +3,7 @@ import Blurb from 'components/Blurb/Blurb'
 import { BlurbType } from 'types/BlurbType'
 import Header from 'components/Header/Header'
 import Hero from 'components/Hero/Hero'
+import { HeroType } from 'types/HeroType'
 import PageContent from 'components/PageContent/PageContent'
 import useDocumentTitle from 'hooks/useDocumentTitle'
 
@@ -45,31 +46,29 @@ function MeetTheTeam() {
     return (
         <>
             <Header />
-            <PageContent>
-                <Hero
-                    image="/assets/images/meet_the_team.webp"
-                    image2x="/assets/images/meet_the_team-2x.webp"
-                    imageAlt=""
-                    title="Meet the Team"
-                />
 
-                <div className="meet-the-team">
-                    {members.map((member, index) => (
-                        <Blurb
-                            key={member.name}
-                            height="240px"
-                            image={member.image.normal}
-                            image2x={member.image.double}
-                            imageAlt=""
-                            type={index % 2 === 0 ? BlurbType.ImageLeft : BlurbType.ImageRight}
-                        >
-                            <h2>
-                                {member.name} ({member.pronouns})
-                            </h2>
-                            <p>{member.description}</p>
-                        </Blurb>
-                    ))}
-                </div>
+            <Hero
+                image="/assets/images/meet_the_team.webp"
+                image2x="/assets/images/meet_the_team-2x.webp"
+                type={HeroType.Short}
+            />
+
+            <PageContent title="Meet the Team">
+                {members.map((member, index) => (
+                    <Blurb
+                        key={member.name}
+                        height="240px"
+                        image={member.image.normal}
+                        image2x={member.image.double}
+                        imageAlt=""
+                        type={index % 2 === 0 ? BlurbType.ImageLeft : BlurbType.ImageRight}
+                    >
+                        <h2>
+                            {member.name} ({member.pronouns})
+                        </h2>
+                        <p>{member.description}</p>
+                    </Blurb>
+                ))}
             </PageContent>
         </>
     )
