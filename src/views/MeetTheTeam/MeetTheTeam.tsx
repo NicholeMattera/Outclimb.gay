@@ -50,6 +50,7 @@ function MeetTheTeam() {
             <Hero
                 image="/assets/images/meet_the_team.webp"
                 image2x="/assets/images/meet_the_team-2x.webp"
+                imagePosition="left center"
                 type={HeroType.Short}
             />
 
