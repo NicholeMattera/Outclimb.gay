@@ -23,6 +23,6 @@
         /* Custom */
         "baseUrl": "./src"
     },
-    "include": ["src"],
+    "include": ["src", "src/custom.d.ts"],
     "references": [{ "path": "./tsconfig.node.json" }]
 }
