@@ -52,7 +52,7 @@ function Events() {
                         {events.map((event) => (
                             <Card
                                 description={getEventDescription(event)}
-                                href={`/events/${event.slug}`}
+                                to={`/events/${event.slug}`}
                                 image={event.smallImage || event.image}
                                 image2x={event.smallImage2x || event.image2x}
                                 imageAlt={event.imageAlt}

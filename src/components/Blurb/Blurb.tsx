@@ -1,7 +1,7 @@
 import './Blurb.scss'
 import { BlurbType } from 'types/BlurbType'
 import classNames from 'classnames'
-import { useMemo } from 'react'
+import useImageSourceSet from 'hooks/useImageSourceSet'
 
 type BlurbProps = {
     children?: React.ReactNode
@@ -13,13 +13,7 @@ type BlurbProps = {
 }
 
 function Blurb(props: BlurbProps) {
-    const imageSourceSet = useMemo(() => {
-        if (props.image2x) {
-            return `${props.image} 1x, ${props.image2x} 2x`
-        }
-
-        return `${props.image} 1x`
-    }, [props.image, props.image2x])
+    const imageSourceSet = useImageSourceSet(props.image, props.image2x)
 
     const blurbClasses = classNames({
         blurb: true,

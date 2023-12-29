@@ -3,10 +3,11 @@ import { useMemo, useState } from 'react'
 import Button from 'components/Button/Button'
 import { ButtonType } from 'types/ButtonType'
 import classNames from 'classnames'
-import { Link } from 'react-router-dom'
+import Link from '../Link/Link'
 import Menu from 'components/Menu/Menu'
 import useDarkMode from 'hooks/useDarkMode'
 import useMobile from 'hooks/useMobile'
+import useVersion from 'hooks/useVersion'
 import useWindowScroll from 'hooks/useWindowScroll'
 
 function Header() {
@@ -19,9 +20,18 @@ function Header() {
         'header--shadow': windowScrollPosition[1] > 0,
     })
 
+    const version = useVersion()
     const headerImage = useMemo(() => {
-        return darkMode ? '/assets/images/logo_dark.webp' : '/assets/images/logo_light.webp'
-    }, [darkMode])
+        if (darkMode && version) {
+            return `/assets/images/logo_dark.webp?version=${version}`
+        } else if (darkMode) {
+            return '/assets/images/logo_dark.webp'
+        } else if (version) {
+            return `/assets/images/logo_light.webp?version=${version}`
+        }
+
+        return '/assets/images/logo_light.webp'
+    }, [darkMode, version])
 
     const [menuIsOpen, setMenuIsOpen] = useState(false)
 

@@ -1,6 +1,6 @@
 import './Hero.scss'
-import { Link } from 'react-router-dom'
-import { useMemo } from 'react'
+import Link from '../Link/Link'
+import useImageSourceSet from 'hooks/useImageSourceSet'
 
 type HeroProps = {
     description?: string
@@ -12,13 +12,7 @@ type HeroProps = {
 }
 
 function Hero(props: HeroProps) {
-    const imageSourceSet = useMemo(() => {
-        if (props.image2x) {
-            return `${props.image} 1x, ${props.image2x} 2x`
-        }
-
-        return `${props.image} 1x`
-    }, [props.image, props.image2x])
+    const imageSourceSet = useImageSourceSet(props.image, props.image2x)
 
     const renderContent = (description?: string, href?: string, title?: string) => {
         if (href && title && description) {

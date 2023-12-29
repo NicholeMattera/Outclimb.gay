@@ -1,7 +1,7 @@
 import './Menu.scss'
 import { useEffect, useMemo, useState } from 'react'
 import classNames from 'classnames'
-import { Link } from 'react-router-dom'
+import Link from '../Link/Link'
 import useDarkMode from 'hooks/useDarkMode'
 import useMobile from 'hooks/useMobile'
 
