@@ -1,0 +1,24 @@
+name: Lookaside
+on:
+  push:
+    branches:
+      - '**'
+      - '!main'
+
+jobs:
+  create_lookaside:
+    name: Create Lookaside
+    runs-on: ubuntu-latest
+    if: github.ref_name != 'main'
+    steps:
+      - name: Create SSH key
+        run: |
+          mkdir -p ~/.ssh/
+          echo "${{ secrets.SSH_KNOWN_HOSTS }}" > ~/.ssh/known_hosts
+          sudo chmod 600 ~/.ssh/known_hosts
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa
+          sudo chmod 600 ~/.ssh/id_rsa
+        shell: bash
+      - name: Run Lookaside script
+        run: ssh -o "IdentitiesOnly=yes" -i ~/.ssh/id_rsa github@outclimb.gay /home/github/outclimb-lookaside.sh create ${{ github.ref_name }}
+        shell: bash
