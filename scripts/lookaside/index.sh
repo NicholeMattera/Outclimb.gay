@@ -14,7 +14,7 @@ if [ $1 = "create" ]; then
     echo "🧹 Cleaning up container and image"
     docker container rm outclimbgay_create-lookaside
     docker image rm outclimbgay_create-lookaside:latest
-else if [ $1 = "delete" ]; then
+elif [ $1 = "delete" ]; then
     docker build --tag outclimbgay_delete-lookaside:latest -f scripts/lookaside/delete-lookaside.dockerfile .
     docker run -e BRANCH_NAME=$2 -v outclimbgay3_lookasides:/lookaside outclimbgay_delete-lookaside
 
