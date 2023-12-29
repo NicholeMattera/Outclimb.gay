@@ -1,5 +1,5 @@
 {
-    "body": "<p>OutClimb is a climbing club that centers around creating a welcoming space for queer, non-binary, and trans people of all backgrounds and skill levels. Climbing is historically white, cisgender, heterosexual, and male dominated; OutClimb looks to change that by providing a queer organized and led space where folks can hangout, climb, and learn with each other.<p>It would be fantastic for folks to come out, climb, be queer, and learn new stuff. Anyone and everyone is welcome, bring your friends!<p>Minneapolis Bouldering Project has single stall locking bathrooms with lockers nearby, and a no questions asked policy for using the gendered locker rooms you identify with.<h2>Discounts</h2><p>If it's your first time attending OutClimb tell the front desk and receive a free day pass with shoe rentals! If you've climbed with us before tell the front desk to receive a discounted day pass with shoe rentals for $12 (+tax)!<h2>First time at Minneapolis Bouldering Project?</h2><p>Fill out a waiver in advance and show up 15 minutes early to complete the tour and orientation before the event!</p>",
+    "body": "<p>OutClimb is a climbing club that centers around creating a welcoming space for queer, non-binary, and trans people of all backgrounds and skill levels. Climbing is historically white, cisgender, heterosexual, and male dominated; OutClimb looks to change that by providing a queer organized and led space where folks can hangout, climb, and learn with each other.<p>It would be fantastic for folks to come out, climb, be queer, and learn new stuff. Anyone and everyone is welcome, bring your friends!<p>Bouldering Project has single stall locking bathrooms with lockers nearby, and a no questions asked policy for using the gendered locker rooms you identify with.<h2>Discounts</h2><p>If it's your first time attending OutClimb tell the front desk and receive a free day pass with shoe rentals! If you've climbed with us before tell the front desk to receive a discounted day pass with shoe rentals for $12 (+tax)!<h2>First time at Bouldering Project?</h2><p>Fill out a waiver in advance and show up 15 minutes early to complete the tour and orientation before the event!</p>",
     "categoryId": 1,
     "images": [
         {
@@ -23,10 +23,10 @@
             "url": "/assets/images/mbp5.webp"
         }
     ],
-    "name": "Bouldering Meetup - Minneapolis Bouldering Project",
-    "slug": "-bouldering-meetup-minneapolis-bouldering-project",
+    "name": "Bouldering Meetup - Bouldering Project",
+    "slug": "-bouldering-meetup-bouldering-project",
     "link": {
         "name": "Waiver",
-        "url": "https://waiver.smartwaiver.com/w/5ef37be079be7/web/"
+        "url": "https://boulderingproject.com/sign-a-waiver/?availableLocationIds=21&locationIds=7&locationID=21"
     }
 }
