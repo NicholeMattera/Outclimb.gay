@@ -45,7 +45,6 @@ $header_link_text_color_light: $light_theme_color;
     }
 
     &--shadow {
-        background: $header_background_light;
         box-shadow: rgba(0, 0, 0, 0.12) 0 2px 4px 0;
 
         &::before {
@@ -184,6 +183,10 @@ $header_link_text_color_light: $light_theme_color;
 
         &--shadow {
             box-shadow: rgba(0, 0, 0, 0.12) 0 2px 4px 0;
+
+            .header__logo svg {
+                filter: drop-shadow(1px 2px 2px $header_link_text_color_light);
+            }
         }
 
         &__logo svg {
