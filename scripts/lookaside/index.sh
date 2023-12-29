@@ -4,7 +4,7 @@ echo "🧹 Cleaning up temp directory"
 rm -rf /tmp/outclimb-lookaside
 
 echo "📦 Downloading the latest"
-git clone --brance $2 --depth 1 https://github.com/OutClimb/Outclimb.gay.git /tmp/outclimb-lookaside
+git clone --branch $2 --depth 1 https://github.com/OutClimb/Outclimb.gay.git /tmp/outclimb-lookaside
 cd /tmp/outclimb-lookaside
 
 if [ $1 = "create" ]; then
