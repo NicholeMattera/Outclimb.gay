@@ -1,4 +1,4 @@
-name: Lookaside
+name: Delete Lookaside
 on:
   delete:
 
