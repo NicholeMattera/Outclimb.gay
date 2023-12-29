@@ -2,7 +2,7 @@ import './Menu.scss'
 import { useEffect, useMemo, useState } from 'react'
 import classNames from 'classnames'
 import Link from '../Link/Link'
-import useDarkMode from 'hooks/useDarkMode'
+import Logo from '../Logo/Logo'
 import useMobile from 'hooks/useMobile'
 
 type MenuProps = {
@@ -11,17 +11,12 @@ type MenuProps = {
 }
 
 function Menu({ onClose, open }: MenuProps) {
-    const darkMode = useDarkMode()
     const mobile = useMobile()
 
     const menuClass = classNames({
         menu: true,
         'menu--open': open,
     })
-
-    const headerImage = useMemo(() => {
-        return darkMode ? '/assets/images/logo_dark.webp' : '/assets/images/logo_light.webp'
-    }, [darkMode])
 
     useEffect(() => {
         return () => {
@@ -75,7 +70,7 @@ function Menu({ onClose, open }: MenuProps) {
                 <div className={menuClass}>
                     <nav className="menu__navigation">
                         <div className="menu__header">
-                            <img src={headerImage} height="32" alt="OutClimb" />
+                            <Logo height="48px" />
                             <span />
                             <button className="header__menu" onClick={() => onClose()}>
                                 <i aria-hidden="true" className="fa-solid fa-xmark"></i>
