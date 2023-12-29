@@ -28,7 +28,7 @@ func (*FrontendHandler) validateVersionQuery(version *string) bool {
 		return false
 	}
 
-	fileinfo, err := os.Stat("./dist/" + *version)
+	fileinfo, err := os.Stat("./dist/lookasides/" + *version)
 	if os.IsNotExist(err) || !fileinfo.IsDir() {
 		return false
 	}
@@ -40,7 +40,7 @@ func (f *FrontendHandler) Index(c *gin.Context) {
 	version, exists := c.GetQuery("version")
 	if exists && f.validateVersionQuery(&version) {
 		c.Header("Content-Type", "text/html; charset=utf-8")
-		c.File("./dist/" + version + "/index.html")
+		c.File("./dist/lookasides/" + version + "/index.html")
 		return
 	}
 
@@ -53,7 +53,7 @@ func (f *FrontendHandler) Assets(c *gin.Context) {
 
 	version, exists := c.GetQuery("version")
 	if exists && f.validateVersionQuery(&version) {
-		c.File("./dist/" + version + "/assets/" + filePath)
+		c.File("./dist/lookasides/" + version + "/assets/" + filePath)
 		return
 	}
 
