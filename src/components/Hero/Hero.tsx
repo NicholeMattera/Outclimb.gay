@@ -9,6 +9,7 @@ type HeroProps = {
     href?: string
     image: string
     image2x?: string
+    imagePosition?: string
     title?: string
     type?: HeroType
 }
@@ -64,7 +65,12 @@ function Hero(props: HeroProps) {
 
     return (
         <div className={heroClasses}>
-            <img aria-hidden="true" className="hero__image" srcSet={imageSourceSet} />
+            <img
+                aria-hidden="true"
+                className="hero__image"
+                srcSet={imageSourceSet}
+                style={{ objectPosition: props.imagePosition }}
+            />
             {renderContent(props.description, props.href, props.title)}
         </div>
     )
