@@ -9,4 +9,4 @@ WORKDIR /app
 RUN npm ci
 RUN npm run build
 
-CMD cp -r /app/dist /lookaside/${BRANCH_NAME}
+CMD rm -rf /lookaside/${BRANCH_NAME} && cp -r /app/dist /lookaside/${BRANCH_NAME}
