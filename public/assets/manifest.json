@@ -1,0 +1,11 @@
+{
+    "name": "OutClimb - Queer Climbing",
+    "short_name": "OutClimb",
+    "icons": [{
+        "src": "/assets/images/google-touch-icon.png",
+        "sizes": "512x512"
+    }],
+    "background_color": "#ffffff",
+    "theme_color": "#ffffff",
+    "display": "fullscreen"
+}
