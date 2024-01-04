@@ -8,7 +8,7 @@ function lookasidePlugin() {
         name: 'lookaside-plugin',
         transformIndexHtml(html) {
             if (env.LOOKASIDE !== undefined) {
-                return html.replace(/"(\/assets\/index-.*?)"/g, '"$1?version=' + encodeURIComponent(env.LOOKASIDE) + '"')
+                return html.replace(/"(\/assets\/.*?)"/g, '"$1?version=' + encodeURIComponent(env.LOOKASIDE) + '"')
             }
 
             return html
