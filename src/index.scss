@@ -3,15 +3,23 @@
 @import 'styles/queries.scss';
 
 @font-face {
+    font-display: swap;
     font-family: 'Montserrat';
     font-weight: bold;
-    src: local('Montserrat'), url('/fonts/montserrat-bold.ttf');
+    src:
+        local('Montserrat'),
+        url('/assets/fonts/montserrat-bold.woff2') format('woff2'),
+        url('/assets/fonts/montserrat-bold.ttf');
 }
 
 @font-face {
+    font-display: swap;
     font-family: 'Montserrat';
     font-weight: normal;
-    src: local('Montserrat'), url('/fonts/montserrat-regular.ttf');
+    src:
+        local('Montserrat'),
+        url('/assets/fonts/montserrat-regular.woff2') format('woff2'),
+        url('/assets/fonts/montserrat-regular.ttf');
 }
 
 * {

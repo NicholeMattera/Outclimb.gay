@@ -1,15 +1,10 @@
 @import 'styles/queries.scss';
 
-.home {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-
-    &__headline {
-        font-size: 40px;
-        padding: 32px 64px;
-        text-align: center;
-    }
+.home__headline {
+    font-size: 40px;
+    grid-column: content;
+    padding: 32px;
+    text-align: center;
 }
 
 @media screen and ($tablet) {

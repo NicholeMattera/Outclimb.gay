@@ -4,6 +4,7 @@ import Button from 'components/Button/Button'
 import DateUtil from 'utils/date.utils'
 import Header from 'components/Header/Header'
 import Hero from 'components/Hero/Hero'
+import { HeroType } from 'types/HeroType'
 import LinkResponse from 'types/LinkResponse'
 import PageContent from 'components/PageContent/PageContent'
 import useDocumentTitle from 'hooks/useDocumentTitle'
@@ -50,18 +51,18 @@ function Event() {
     return (
         <>
             <Header />
+            {status === 'success' && event && (
+                <Hero image={event.image} image2x={event.image2x} type={HeroType.Short} />
+            )}
             <PageContent>
                 {status === 'loading' && <p>Loading</p>}
                 {status === 'error' && error != null && <h2>{error.toString()}</h2>}
                 {status === 'success' && event && (
                     <>
-                        <Hero
-                            description={eventDescription}
-                            image={event.image}
-                            image2x={event.image2x}
-                            imageAlt={event.imageAlt}
-                            title={event.name}
-                        />
+                        <div className="event__header">
+                            <h1>{event.name}</h1>
+                            <p>{eventDescription}</p>
+                        </div>
 
                         <div className="event__body" dangerouslySetInnerHTML={{ __html: event.body }}></div>
 

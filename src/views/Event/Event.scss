@@ -1,6 +1,19 @@
 .event {
+    &__header {
+        grid-column: content;
+        margin: 24px 0;
+
+        h1 {
+            margin: 0 0 4px;
+        }
+
+        p {
+            margin: 4px 0 0;
+        }
+    }
+
     &__body {
-        margin: 48px 8px 32px;
+        grid-column: content;
 
         h2 {
             margin: 16px 0 8px;
@@ -14,5 +27,6 @@
     &__links {
         display: flex;
         gap: 16px;
+        grid-column: content;
     }
 }
